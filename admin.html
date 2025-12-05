@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - NEXUS VAULT</title>
+  <meta name="description" content="NEXUS VAULT Admin Control Panel - Manage users, games, and store analytics.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="/" class="nav-logo">NEXUS//VAULT</a>
+      <ul class="nav-links">
+        <li><a href="/">Store</a></li>
+        <li><a href="/admin.html">Dashboard</a></li>
+      </ul>
+      <div class="nav-auth">
+        <span class="admin-badge">ADMIN MODE</span>
+        <a href="/signin.html" class="btn btn-secondary">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard -->
+  <main class="dashboard">
+    <div class="dashboard-grid">
+      <!-- Sidebar -->
+      <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+          <li><a href="#" class="active">📊 Overview</a></li>
+          <li><a href="#">🎮 Games</a></li>
+          <li><a href="#">👥 Users</a></li>
+          <li><a href="#">💰 Revenue</a></li>
+          <li><a href="#">📈 Analytics</a></li>
+          <li><a href="#">🔔 Notifications</a></li>
+          <li><a href="#">⚙️ Settings</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="dashboard-main">
+        <h1 class="dashboard-title">Control Center</h1>
+        
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-card-icon">💰</span>
+            <span class="stat-card-value">$284,521</span>
+            <span class="stat-card-label">Total Revenue</span>
+            <span class="stat-card-change positive">↑ +12.5% from last month</span>
+          </div>
+          
+          <div class="stat-card accent-pink">
+            <span class="stat-card-icon">👥</span>
+            <span class="stat-card-value">45,892</span>
+            <span class="stat-card-label">Active Users</span>
+            <span class="stat-card-change positive">↑ +8.2% from last month</span>
+          </div>
+          
+          <div class="stat-card accent-yellow">
+            <span class="stat-card-icon">🎮</span>
+            <span class="stat-card-value">156</span>
+            <span class="stat-card-label">Games Available</span>
+            <span class="stat-card-change positive">↑ +6 new this month</span>
+          </div>
+          
+          <div class="stat-card accent-green">
+            <span class="stat-card-icon">📦</span>
+            <span class="stat-card-value">12,847</span>
+            <span class="stat-card-label">Total Sales</span>
+            <span class="stat-card-change negative">↓ -2.1% from last month</span>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-row">
+          <!-- Bar Chart -->
+          <div class="chart-container chart-large">
+            <h3 class="chart-title">Monthly Revenue</h3>
+            <div class="bar-chart">
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 45%;"><span class="bar-value">$18K</span></div>
+                <span class="bar-label">Jan</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 55%;"><span class="bar-value">$22K</span></div>
+                <span class="bar-label">Feb</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 40%;"><span class="bar-value">$16K</span></div>
+                <span class="bar-label">Mar</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 70%;"><span class="bar-value">$28K</span></div>
+                <span class="bar-label">Apr</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 85%;"><span class="bar-value">$34K</span></div>
+                <span class="bar-label">May</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 65%;"><span class="bar-value">$26K</span></div>
+                <span class="bar-label">Jun</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 95%;"><span class="bar-value">$38K</span></div>
+                <span class="bar-label">Jul</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 80%;"><span class="bar-value">$32K</span></div>
+                <span class="bar-label">Aug</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 60%;"><span class="bar-value">$24K</span></div>
+                <span class="bar-label">Sep</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 75%;"><span class="bar-value">$30K</span></div>
+                <span class="bar-label">Oct</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 50%;"><span class="bar-value">$20K</span></div>
+                <span class="bar-label">Nov</span>
+              </div>
+              <div class="bar-chart-item">
+                <div class="bar" style="height: 100%;"><span class="bar-value">$40K</span></div>
+                <span class="bar-label">Dec</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Donut Chart -->
+          <div class="chart-container">
+            <h3 class="chart-title">Sales by Genre</h3>
+            <div class="donut-chart">
+              <div class="donut">
+                <div class="donut-center">
+                  <span class="donut-value">12.8K</span>
+                  <span class="donut-label">Total</span>
+                </div>
+              </div>
+              <div class="donut-legend">
+                <div class="legend-item">
+                  <span class="legend-color cyan"></span>
+                  <span>Action (40%)</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color magenta"></span>
+                  <span>RPG (30%)</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color yellow"></span>
+                  <span>Strategy (20%)</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-color green"></span>
+                  <span>Others (10%)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Chart -->
+        <div class="chart-container">
+          <h3 class="chart-title">Daily Active Users (Last 30 Days)</h3>
+          <div class="line-chart">
+            <div class="line-point" style="height: 45%;"></div>
+            <div class="line-point" style="height: 55%;"></div>
+            <div class="line-point" style="height: 40%;"></div>
+            <div class="line-point" style="height: 60%;"></div>
+            <div class="line-point" style="height: 75%;"></div>
+            <div class="line-point" style="height: 65%;"></div>
+            <div class="line-point" style="height: 80%;"></div>
+            <div class="line-point" style="height: 70%;"></div>
+            <div class="line-point" style="height: 85%;"></div>
+            <div class="line-point" style="height: 90%;"></div>
+            <div class="line-point" style="height: 75%;"></div>
+            <div class="line-point" style="height: 60%;"></div>
+            <div class="line-point" style="height: 50%;"></div>
+            <div class="line-point" style="height: 65%;"></div>
+            <div class="line-point" style="height: 70%;"></div>
+            <div class="line-point" style="height: 80%;"></div>
+            <div class="line-point" style="height: 85%;"></div>
+            <div class="line-point" style="height: 95%;"></div>
+            <div class="line-point" style="height: 100%;"></div>
+            <div class="line-point" style="height: 90%;"></div>
+            <div class="line-point" style="height: 75%;"></div>
+            <div class="line-point" style="height: 80%;"></div>
+            <div class="line-point" style="height: 70%;"></div>
+            <div class="line-point" style="height: 65%;"></div>
+            <div class="line-point" style="height: 55%;"></div>
+            <div class="line-point" style="height: 60%;"></div>
+            <div class="line-point" style="height: 70%;"></div>
+            <div class="line-point" style="height: 85%;"></div>
+            <div class="line-point" style="height: 90%;"></div>
+            <div class="line-point" style="height: 95%;"></div>
+          </div>
+        </div>
+
+        <!-- Recent Users Table -->
+        <div class="chart-container">
+          <h3 class="chart-title">Recent Users</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Games</th>
+                <th>Spent</th>
+                <th>Status</th>
+                <th>Joined</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <div class="user-avatar">JD</div>
+                    <span>John Doe</span>
+                  </div>
+                </td>
+                <td>john.doe@email.com</td>
+                <td>24</td>
+                <td class="text-yellow">$489.00</td>
+                <td><span class="status-badge active">Active</span></td>
+                <td>Dec 1, 2025</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <div class="user-avatar">AS</div>
+                    <span>Alice Smith</span>
+                  </div>
+                </td>
+                <td>alice.s@email.com</td>
+                <td>18</td>
+                <td class="text-yellow">$324.50</td>
+                <td><span class="status-badge active">Active</span></td>
+                <td>Nov 28, 2025</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <div class="user-avatar">BW</div>
+                    <span>Bob Wilson</span>
+                  </div>
+                </td>
+                <td>bob.w@email.com</td>
+                <td>5</td>
+                <td class="text-yellow">$89.99</td>
+                <td><span class="status-badge pending">Pending</span></td>
+                <td>Nov 25, 2025</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <div class="user-avatar">CJ</div>
+                    <span>Carol Jones</span>
+                  </div>
+                </td>
+                <td>carol.j@email.com</td>
+                <td>42</td>
+                <td class="text-yellow">$892.00</td>
+                <td><span class="status-badge active">Active</span></td>
+                <td>Nov 20, 2025</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="user-cell">
+                    <div class="user-avatar">DM</div>
+                    <span>David Miller</span>
+                  </div>
+                </td>
+                <td>david.m@email.com</td>
+                <td>0</td>
+                <td class="text-yellow">$0.00</td>
+                <td><span class="status-badge inactive">Inactive</span></td>
+                <td>Nov 15, 2025</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Games Management Table -->
+        <div class="chart-container">
+          <h3 class="chart-title">Top Selling Games</h3>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Game</th>
+                <th>Genre</th>
+                <th>Price</th>
+                <th>Sales</th>
+                <th>Revenue</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-primary">Neon Runners</td>
+                <td>Action</td>
+                <td>$49.99</td>
+                <td>2,847</td>
+                <td class="text-green">$142,306</td>
+                <td><span class="status-badge active">Live</span></td>
+              </tr>
+              <tr>
+                <td class="text-primary">Chrome Shadows</td>
+                <td>RPG</td>
+                <td>$59.99</td>
+                <td>1,923</td>
+                <td class="text-green">$115,361</td>
+                <td><span class="status-badge active">Live</span></td>
+              </tr>
+              <tr>
+                <td class="text-primary">Cyber Arena</td>
+                <td>Multiplayer</td>
+                <td>FREE</td>
+                <td>8,542</td>
+                <td class="text-green">$45,210</td>
+                <td><span class="status-badge active">Live</span></td>
+              </tr>
+              <tr>
+                <td class="text-primary">Mech Uprising</td>
+                <td>Action</td>
+                <td>$54.99</td>
+                <td>892</td>
+                <td class="text-green">$49,051</td>
+                <td><span class="status-badge pending">Coming Soon</span></td>
+              </tr>
+              <tr>
+                <td class="text-primary">Void Protocol</td>
+                <td>Horror</td>
+                <td>$34.99</td>
+                <td>1,245</td>
+                <td class="text-green">$43,562</td>
+                <td><span class="status-badge active">Live</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
