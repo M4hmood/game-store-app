@@ -671,6 +671,7 @@ h3 {
     linear-gradient(180deg, rgba(0, 245, 255, 0.1) 0%, transparent 100%),
     var(--bg-primary);
   border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+  text-align: center;
 }
 
 .library-welcome {
@@ -684,6 +685,7 @@ h3 {
   gap: var(--space-xl);
   margin-top: var(--space-lg);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .stat-item {
