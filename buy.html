@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +14,7 @@
       min-height: 500px;
       margin-top: 80px;
       background: linear-gradient(to bottom, rgba(13, 13, 20, 0) 0%, var(--bg-primary) 100%),
-                  url('https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_b6e0c6d6c0c393477cc717ce1c448ecdf1df51f5.1920x1080.jpg') center/cover;
+        url('https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_b6e0c6d6c0c393477cc717ce1c448ecdf1df51f5.1920x1080.jpg') center/cover;
       display: flex;
       align-items: flex-end;
     }
@@ -25,7 +26,8 @@
       background-image: url('assets/images/cyber1.jpg');
       background-size: cover;
       background-position: center;
-      opacity: 0.15; /* Low opacity - adjust between 0.1 to 0.3 */
+      opacity: 0.15;
+      /* Low opacity - adjust between 0.1 to 0.3 */
       z-index: 0;
     }
 
@@ -226,11 +228,20 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.1); }
+
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.8;
+        transform: scale(1.1);
+      }
     }
 
-    .buy-box > * {
+    .buy-box>* {
       position: relative;
       z-index: 1;
     }
@@ -373,6 +384,7 @@
     }
   </style>
 </head>
+
 <body>
   <!-- Navigation -->
   <nav class="nav">
@@ -383,6 +395,7 @@
         <li><a href="library.html">Library</a></li>
         <li><a href="#featured">Featured</a></li>
         <li><a href="#categories">Categories</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
       </ul>
       <div class="nav-auth">
         <a href="signin.html" class="btn btn-secondary">Sign In</a>
@@ -424,13 +437,17 @@
       <div class="detail-card">
         <h2 class="card-title">About This Game</h2>
         <p class="card-text">
-          Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous megalopolis obsessed with power, glamour, and ceaseless body modification.
+          Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous
+          megalopolis obsessed with power, glamour, and ceaseless body modification.
         </p>
         <p class="card-text">
-          You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality. Customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you.
+          You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.
+          Customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you
+          make shape the story and the world around you.
         </p>
         <p class="card-text">
-          Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the streets of Night City.
+          Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the
+          streets of Night City.
         </p>
         <div class="tags">
           <span class="tag">Open World</span>
@@ -614,4 +631,5 @@
     </div>
   </footer>
 </body>
+
 </html>
