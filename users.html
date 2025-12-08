@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
+
 <body>
   <!-- Navigation -->
   <nav class="nav">
@@ -33,7 +35,7 @@
           <li><a href="admin.html">📊 Overview</a></li>
           <li><a href="games.html">🎮 Games</a></li>
           <li><a href="users.html" class="active">👥 Users</a></li>
-          <li><a href="#">💰 Revenue</a></li>
+          <li><a href="revenue.html">💰 Revenue</a></li>
           <li><a href="#">📈 Analytics</a></li>
           <li><a href="#">🔔 Notifications</a></li>
           <li><a href="#">⚙️ Settings</a></li>
@@ -47,12 +49,7 @@
         <!-- Controls Section -->
         <div class="users-controls">
           <div class="search-container">
-            <input 
-              type="text" 
-              class="search-input" 
-              placeholder="Search users by name, email, or ID..." 
-              id="userSearch"
-            >
+            <input type="text" class="search-input" placeholder="Search users by name, email, or ID..." id="userSearch">
             <span class="search-icon">🔍</span>
           </div>
           <div class="control-buttons">
@@ -69,21 +66,21 @@
             <span class="stat-card-label">Total Users</span>
             <span class="stat-card-change positive">↑ +2,150 this month</span>
           </div>
-          
+
           <div class="stat-card accent-pink">
             <span class="stat-card-icon">✓</span>
             <span class="stat-card-value">12,456</span>
             <span class="stat-card-label">Active Today</span>
             <span class="stat-card-change positive">↑ +8.5% from yesterday</span>
           </div>
-          
+
           <div class="stat-card accent-yellow">
             <span class="stat-card-icon">⏱️</span>
             <span class="stat-card-value">3,214</span>
             <span class="stat-card-label">Inactive (30d)</span>
             <span class="stat-card-change negative">↓ -12% engagement</span>
           </div>
-          
+
           <div class="stat-card accent-green">
             <span class="stat-card-icon">⭐</span>
             <span class="stat-card-value">854</span>
@@ -308,7 +305,7 @@
 
     searchInput.addEventListener('keyup', (e) => {
       const searchTerm = e.target.value.toLowerCase();
-      
+
       tableRows.forEach(row => {
         const text = row.textContent.toLowerCase();
         row.style.display = text.includes(searchTerm) ? '' : 'none';
@@ -320,8 +317,8 @@
       btn.addEventListener('click', (e) => {
         const action = e.target.classList[1];
         const userId = e.target.closest('tr').querySelector('.user-id').textContent;
-        
-        switch(action) {
+
+        switch (action) {
           case 'edit':
             alert(`Edit user ${userId}`);
             break;
@@ -329,12 +326,12 @@
             alert(`View profile for ${userId}`);
             break;
           case 'ban':
-            if(confirm(`Ban user ${userId}?`)) {
+            if (confirm(`Ban user ${userId}?`)) {
               alert(`User ${userId} has been banned`);
             }
             break;
           case 'unban':
-            if(confirm(`Unban user ${userId}?`)) {
+            if (confirm(`Unban user ${userId}?`)) {
               alert(`User ${userId} has been unbanned`);
             }
             break;
@@ -343,4 +340,5 @@
     });
   </script>
 </body>
+
 </html>
