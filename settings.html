@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="styles.css?v=2">
 </head>
+
 <body>
   <!-- Navigation -->
   <nav class="nav">
@@ -33,7 +35,7 @@
           <li><a href="admin.html">📊 Overview</a></li>
           <li><a href="games.html">🎮 Games</a></li>
           <li><a href="users.html">👥 Users</a></li>
-          <li><a href="#">💰 Revenue</a></li>
+          <li><a href="revenue.html">💰 Revenue</a></li>
           <li><a href="#">📈 Analytics</a></li>
           <li><a href="#">🔔 Notifications</a></li>
           <li><a href="settings.html" class="active">⚙️ Settings</a></li>
@@ -57,16 +59,18 @@
         <div class="settings-content active" id="general">
           <div class="settings-section">
             <h2 class="section-title">General Settings</h2>
-            
+
             <div class="settings-group">
               <label for="storeName" class="setting-label">Store Name</label>
-              <input type="text" id="storeName" class="settings-input" value="NEXUS VAULT" placeholder="Enter store name">
+              <input type="text" id="storeName" class="settings-input" value="NEXUS VAULT"
+                placeholder="Enter store name">
               <p class="setting-description">The name displayed across your store</p>
             </div>
 
             <div class="settings-group">
               <label for="storeEmail" class="setting-label">Store Email</label>
-              <input type="email" id="storeEmail" class="settings-input" value="admin@nexusvault.com" placeholder="Enter store email">
+              <input type="email" id="storeEmail" class="settings-input" value="admin@nexusvault.com"
+                placeholder="Enter store email">
               <p class="setting-description">Primary contact email for the store</p>
             </div>
 
@@ -107,7 +111,7 @@
         <div class="settings-content" id="security">
           <div class="settings-section">
             <h2 class="section-title">Security Settings</h2>
-            
+
             <div class="settings-group">
               <label class="setting-label">Two-Factor Authentication (2FA)</label>
               <div class="security-status">
@@ -166,10 +170,11 @@
         <div class="settings-content" id="email">
           <div class="settings-section">
             <h2 class="section-title">Email Configuration</h2>
-            
+
             <div class="settings-group">
               <label for="smtpHost" class="setting-label">SMTP Host</label>
-              <input type="text" id="smtpHost" class="settings-input" value="smtp.gmail.com" placeholder="Enter SMTP host">
+              <input type="text" id="smtpHost" class="settings-input" value="smtp.gmail.com"
+                placeholder="Enter SMTP host">
             </div>
 
             <div class="settings-group">
@@ -189,7 +194,8 @@
 
             <div class="settings-group">
               <label for="fromEmail" class="setting-label">From Email Address</label>
-              <input type="email" id="fromEmail" class="settings-input" value="noreply@nexusvault.com" placeholder="Email sending address">
+              <input type="email" id="fromEmail" class="settings-input" value="noreply@nexusvault.com"
+                placeholder="Email sending address">
             </div>
 
             <div class="settings-group">
@@ -205,7 +211,7 @@
         <div class="settings-content" id="payment">
           <div class="settings-section">
             <h2 class="section-title">Payment Settings</h2>
-            
+
             <div class="settings-group">
               <label for="stripeKey" class="setting-label">Stripe API Key</label>
               <input type="password" id="stripeKey" class="settings-input" placeholder="Enter Stripe API key">
@@ -250,7 +256,7 @@
         <div class="settings-content" id="system">
           <div class="settings-section">
             <h2 class="section-title">System Settings</h2>
-            
+
             <div class="settings-group">
               <label class="setting-label">Database Backups</label>
               <div class="backup-info">
@@ -306,11 +312,11 @@
     tabs.forEach(tab => {
       tab.addEventListener('click', (e) => {
         const tabName = e.target.dataset.tab;
-        
+
         // Remove active class from all
         tabs.forEach(t => t.classList.remove('active'));
         contents.forEach(c => c.classList.remove('active'));
-        
+
         // Add active class to clicked tab and corresponding content
         e.target.classList.add('active');
         document.getElementById(tabName).classList.add('active');
@@ -320,7 +326,7 @@
     // Save button handlers
     document.querySelectorAll('.btn-primary').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        if(e.target.textContent.includes('Save')) {
+        if (e.target.textContent.includes('Save')) {
           alert('✅ Settings saved successfully!');
         }
       });
@@ -328,14 +334,14 @@
 
     // Test email button
     document.querySelector('.btn-secondary').addEventListener('click', (e) => {
-      if(e.target.textContent.includes('Test')) {
+      if (e.target.textContent.includes('Test')) {
         alert('📧 Test email sent successfully!');
       }
     });
 
     // Backup button
     const backupBtn = document.querySelectorAll('.btn-secondary')[1];
-    if(backupBtn) {
+    if (backupBtn) {
       backupBtn.addEventListener('click', () => {
         alert('🔄 Creating backup... This may take a few minutes.');
       });
@@ -343,11 +349,12 @@
 
     // Clear cache button
     const cacheBtn = document.querySelectorAll('.btn-secondary')[2];
-    if(cacheBtn) {
+    if (cacheBtn) {
       cacheBtn.addEventListener('click', () => {
         alert('✅ Cache cleared successfully!');
       });
     }
   </script>
 </body>
+
 </html>
