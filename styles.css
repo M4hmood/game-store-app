@@ -1547,3 +1547,55 @@ input[type="range"]::-webkit-slider-thumb {
     margin-bottom: var(--space-lg);
   }
 }
+
+/* ========== Admin Games Styles ========== */
+.card-add {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed rgba(0, 245, 255, 0.3);
+  cursor: pointer;
+  background: rgba(0, 245, 255, 0.02);
+  min-height: 300px;
+  /* Match approx height of other cards */
+}
+
+.card-add:hover {
+  background: rgba(0, 245, 255, 0.05);
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.add-icon {
+  font-size: 5rem;
+  color: var(--neon-cyan);
+  line-height: 1;
+  margin-bottom: var(--space-md);
+  text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.add-text {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--neon-pink);
+  border-color: var(--neon-pink);
+  margin-left: 5px;
+}
+
+.btn-danger:hover {
+  background: rgba(255, 51, 102, 0.1);
+  box-shadow: var(--glow-pink);
+  color: var(--neon-pink);
+}
+
+.game-card-meta button {
+  flex: 1;
+}
