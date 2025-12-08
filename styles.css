@@ -1921,3 +1921,331 @@ input[type="range"]::-webkit-slider-thumb {
     width: 100%;
   }
 }
+
+/* ========== SETTINGS PAGE STYLES ========== */
+
+/* Settings Tabs */
+.settings-tabs {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  border-bottom: 2px solid rgba(0, 225, 255, 0.1);
+  padding-bottom: var(--space-lg);
+}
+
+.settings-tab {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1.5rem;
+  position: relative;
+}
+
+.settings-tab:hover {
+  color: var(--neon-cyan);
+  transform: translateY(-2px);
+}
+
+.settings-tab.active {
+  color: var(--neon-cyan);
+  border-bottom-color: var(--neon-cyan);
+  box-shadow: 0 2px 10px rgba(0, 225, 255, 0.3);
+}
+
+/* Settings Content */
+.settings-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.settings-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.settings-section {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 225, 255, 0.1);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-lg);
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Settings Groups */
+.settings-group {
+  margin-bottom: var(--space-lg);
+}
+
+.settings-group.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.setting-label {
+  display: block;
+  color: var(--neon-cyan);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.setting-description {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  margin-top: var(--space-sm);
+}
+
+/* Settings Inputs */
+.settings-input,
+.settings-checkbox {
+  font-family: var(--font-body);
+}
+
+.settings-input {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-elevated);
+  border: 1px solid rgba(0, 225, 255, 0.2);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  margin-top: var(--space-sm);
+}
+
+.settings-input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px rgba(0, 225, 255, 0.3);
+  background: var(--bg-secondary);
+}
+
+.settings-input option {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.settings-checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--neon-cyan);
+  margin-top: var(--space-sm);
+}
+
+.checkbox-label {
+  color: var(--neon-cyan);
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.95rem;
+}
+
+/* Security Status */
+.security-status,
+.backup-info,
+.cache-info,
+.system-info {
+  background: var(--bg-primary);
+  border-left: 3px solid var(--neon-cyan);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-indicator.active {
+  color: var(--neon-green);
+}
+
+/* Password Requirements */
+.password-requirements {
+  background: var(--bg-primary);
+  border-left: 3px solid var(--neon-yellow);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+.req-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  color: var(--text-secondary);
+}
+
+.req-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--neon-green);
+}
+
+/* Activity Log */
+.activity-log {
+  background: var(--bg-primary);
+  border-left: 3px solid var(--neon-magenta);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(0, 225, 255, 0.1);
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-action {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.activity-time {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+/* Payment Methods */
+.payment-methods {
+  background: var(--bg-primary);
+  border-left: 3px solid var(--neon-cyan);
+  padding: var(--space-lg);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-md);
+}
+
+.method-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm) 0;
+  color: var(--text-secondary);
+}
+
+.method-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--neon-cyan);
+  cursor: pointer;
+}
+
+.method-item:hover {
+  color: var(--text-primary);
+}
+
+/* System Info */
+.backup-info,
+.cache-info,
+.system-info {
+  border-left-color: var(--neon-cyan);
+}
+
+.backup-info p,
+.cache-info p,
+.system-info p {
+  color: var(--text-secondary);
+  margin: var(--space-sm) 0;
+  font-family: var(--font-mono);
+}
+
+.backup-info strong,
+.cache-info strong,
+.system-info strong {
+  color: var(--neon-cyan);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .settings-tabs {
+    gap: var(--space-sm);
+  }
+
+  .settings-tab {
+    padding: var(--space-md) var(--space-md);
+    font-size: 0.85rem;
+  }
+
+  .settings-section {
+    padding: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-tabs {
+    flex-direction: column;
+    border-bottom: none;
+    padding-bottom: 0;
+    gap: var(--space-sm);
+  }
+
+  .settings-tab {
+    width: 100%;
+    text-align: left;
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+    padding: var(--space-md);
+  }
+
+  .settings-tab.active {
+    border-left-color: var(--neon-cyan);
+    border-bottom: none;
+    background: rgba(0, 225, 255, 0.05);
+  }
+
+  .settings-section {
+    padding: var(--space-lg);
+  }
+
+  .activity-log {
+    max-height: none;
+  }
+}

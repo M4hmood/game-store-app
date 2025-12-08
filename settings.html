@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - NEXUS VAULT Admin</title>
+  <meta name="description" content="NEXUS VAULT Admin - Configure system settings and preferences.">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">NEXUS//VAULT</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Store</a></li>
+        <li><a href="admin.html">Dashboard</a></li>
+      </ul>
+      <div class="nav-auth">
+        <span class="admin-badge">ADMIN MODE</span>
+        <a href="signin.html" class="btn btn-secondary">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Settings -->
+  <main class="dashboard">
+    <div class="dashboard-grid">
+      <!-- Sidebar -->
+      <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+          <li><a href="admin.html">📊 Overview</a></li>
+          <li><a href="games.html">🎮 Games</a></li>
+          <li><a href="users.html">👥 Users</a></li>
+          <li><a href="#">💰 Revenue</a></li>
+          <li><a href="#">📈 Analytics</a></li>
+          <li><a href="#">🔔 Notifications</a></li>
+          <li><a href="settings.html" class="active">⚙️ Settings</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="dashboard-main">
+        <h1 class="dashboard-title">Settings</h1>
+
+        <!-- Settings Tabs -->
+        <div class="settings-tabs">
+          <button class="settings-tab active" data-tab="general">🎛️ General</button>
+          <button class="settings-tab" data-tab="security">🔒 Security</button>
+          <button class="settings-tab" data-tab="email">📧 Email</button>
+          <button class="settings-tab" data-tab="payment">💳 Payment</button>
+          <button class="settings-tab" data-tab="system">⚙️ System</button>
+        </div>
+
+        <!-- General Settings -->
+        <div class="settings-content active" id="general">
+          <div class="settings-section">
+            <h2 class="section-title">General Settings</h2>
+            
+            <div class="settings-group">
+              <label for="storeName" class="setting-label">Store Name</label>
+              <input type="text" id="storeName" class="settings-input" value="NEXUS VAULT" placeholder="Enter store name">
+              <p class="setting-description">The name displayed across your store</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="storeEmail" class="setting-label">Store Email</label>
+              <input type="email" id="storeEmail" class="settings-input" value="admin@nexusvault.com" placeholder="Enter store email">
+              <p class="setting-description">Primary contact email for the store</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="timezone" class="setting-label">Timezone</label>
+              <select id="timezone" class="settings-input">
+                <option>UTC</option>
+                <option selected>GMT+1 (Europe/London)</option>
+                <option>EST (US/Eastern)</option>
+                <option>CST (US/Central)</option>
+                <option>PST (US/Pacific)</option>
+              </select>
+              <p class="setting-description">Set the default timezone for the store</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="currency" class="setting-label">Currency</label>
+              <select id="currency" class="settings-input">
+                <option>USD ($)</option>
+                <option selected>EUR (€)</option>
+                <option>GBP (£)</option>
+                <option>JPY (¥)</option>
+              </select>
+              <p class="setting-description">Default currency for transactions</p>
+            </div>
+
+            <div class="settings-group checkbox">
+              <input type="checkbox" id="maintenanceMode" class="settings-checkbox">
+              <label for="maintenanceMode" class="checkbox-label">Maintenance Mode</label>
+              <p class="setting-description">Enable maintenance mode to temporarily disable store access</p>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: var(--space-lg);">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <!-- Security Settings -->
+        <div class="settings-content" id="security">
+          <div class="settings-section">
+            <h2 class="section-title">Security Settings</h2>
+            
+            <div class="settings-group">
+              <label class="setting-label">Two-Factor Authentication (2FA)</label>
+              <div class="security-status">
+                <span class="status-indicator active">● Enabled</span>
+              </div>
+              <p class="setting-description">Require 2FA for all admin accounts</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="sessionTimeout" class="setting-label">Session Timeout (minutes)</label>
+              <input type="number" id="sessionTimeout" class="settings-input" value="30" min="5" max="120">
+              <p class="setting-description">Auto-logout after inactive period</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="passwordPolicy" class="setting-label">Password Requirements</label>
+              <div class="password-requirements">
+                <div class="req-item">
+                  <input type="checkbox" checked disabled> Minimum 8 characters
+                </div>
+                <div class="req-item">
+                  <input type="checkbox" checked disabled> Require uppercase letters
+                </div>
+                <div class="req-item">
+                  <input type="checkbox" checked disabled> Require numbers
+                </div>
+                <div class="req-item">
+                  <input type="checkbox" checked disabled> Require special characters
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <label class="setting-label">Recent Admin Activity</label>
+              <div class="activity-log">
+                <div class="activity-item">
+                  <span class="activity-action">🔑 Admin Login</span>
+                  <span class="activity-time">2 hours ago</span>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-action">📝 Settings Modified</span>
+                  <span class="activity-time">5 hours ago</span>
+                </div>
+                <div class="activity-item">
+                  <span class="activity-action">🗑️ User Deleted</span>
+                  <span class="activity-time">1 day ago</span>
+                </div>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: var(--space-lg);">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <!-- Email Settings -->
+        <div class="settings-content" id="email">
+          <div class="settings-section">
+            <h2 class="section-title">Email Configuration</h2>
+            
+            <div class="settings-group">
+              <label for="smtpHost" class="setting-label">SMTP Host</label>
+              <input type="text" id="smtpHost" class="settings-input" value="smtp.gmail.com" placeholder="Enter SMTP host">
+            </div>
+
+            <div class="settings-group">
+              <label for="smtpPort" class="setting-label">SMTP Port</label>
+              <input type="number" id="smtpPort" class="settings-input" value="587" placeholder="Enter SMTP port">
+            </div>
+
+            <div class="settings-group">
+              <label for="smtpUser" class="setting-label">SMTP Username</label>
+              <input type="email" id="smtpUser" class="settings-input" placeholder="Enter SMTP username">
+            </div>
+
+            <div class="settings-group">
+              <label for="smtpPass" class="setting-label">SMTP Password</label>
+              <input type="password" id="smtpPass" class="settings-input" placeholder="Enter SMTP password">
+            </div>
+
+            <div class="settings-group">
+              <label for="fromEmail" class="setting-label">From Email Address</label>
+              <input type="email" id="fromEmail" class="settings-input" value="noreply@nexusvault.com" placeholder="Email sending address">
+            </div>
+
+            <div class="settings-group">
+              <label class="setting-label">Test Email Configuration</label>
+              <button class="btn btn-secondary">🧪 Send Test Email</button>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: var(--space-lg);">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <!-- Payment Settings -->
+        <div class="settings-content" id="payment">
+          <div class="settings-section">
+            <h2 class="section-title">Payment Settings</h2>
+            
+            <div class="settings-group">
+              <label for="stripeKey" class="setting-label">Stripe API Key</label>
+              <input type="password" id="stripeKey" class="settings-input" placeholder="Enter Stripe API key">
+              <p class="setting-description">Your Stripe publishable key for payments</p>
+            </div>
+
+            <div class="settings-group">
+              <label for="stripeSec" class="setting-label">Stripe Secret Key</label>
+              <input type="password" id="stripeSec" class="settings-input" placeholder="Enter Stripe secret key">
+              <p class="setting-description">Keep this key secure and never share it</p>
+            </div>
+
+            <div class="settings-group">
+              <label class="setting-label">Payment Methods</label>
+              <div class="payment-methods">
+                <div class="method-item">
+                  <input type="checkbox" checked> Credit/Debit Cards
+                </div>
+                <div class="method-item">
+                  <input type="checkbox" checked> PayPal
+                </div>
+                <div class="method-item">
+                  <input type="checkbox"> Apple Pay
+                </div>
+                <div class="method-item">
+                  <input type="checkbox"> Google Pay
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-group">
+              <label for="commission" class="setting-label">Platform Commission (%)</label>
+              <input type="number" id="commission" class="settings-input" value="15" min="0" max="100" step="0.5">
+              <p class="setting-description">Percentage taken from each sale</p>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: var(--space-lg);">💾 Save Changes</button>
+          </div>
+        </div>
+
+        <!-- System Settings -->
+        <div class="settings-content" id="system">
+          <div class="settings-section">
+            <h2 class="section-title">System Settings</h2>
+            
+            <div class="settings-group">
+              <label class="setting-label">Database Backups</label>
+              <div class="backup-info">
+                <p>Last backup: <strong>2 hours ago</strong></p>
+                <p>Backup size: <strong>256 MB</strong></p>
+              </div>
+              <button class="btn btn-secondary" style="margin-top: var(--space-md);">🔄 Create Backup Now</button>
+            </div>
+
+            <div class="settings-group">
+              <label class="setting-label">Cache Settings</label>
+              <div class="cache-info">
+                <p>Cache size: <strong>124 MB</strong></p>
+                <p>Cache type: <strong>Redis</strong></p>
+              </div>
+              <button class="btn btn-secondary" style="margin-top: var(--space-md);">🗑️ Clear Cache</button>
+            </div>
+
+            <div class="settings-group">
+              <label for="apiRate" class="setting-label">API Rate Limit (req/min)</label>
+              <input type="number" id="apiRate" class="settings-input" value="1000" min="100" max="10000" step="100">
+              <p class="setting-description">Maximum API requests per minute per user</p>
+            </div>
+
+            <div class="settings-group checkbox">
+              <input type="checkbox" id="apiDebug" class="settings-checkbox">
+              <label for="apiDebug" class="checkbox-label">API Debug Mode</label>
+              <p class="setting-description">Enable detailed API logging (disable in production)</p>
+            </div>
+
+            <div class="settings-group">
+              <label class="setting-label">System Information</label>
+              <div class="system-info">
+                <p>Server: <strong>Apache/2.4.48</strong></p>
+                <p>PHP Version: <strong>8.1.0</strong></p>
+                <p>Database: <strong>MySQL 8.0.28</strong></p>
+                <p>Uptime: <strong>45 days</strong></p>
+              </div>
+            </div>
+
+            <button class="btn btn-primary" style="margin-top: var(--space-lg);">💾 Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.settings-tab');
+    const contents = document.querySelectorAll('.settings-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const tabName = e.target.dataset.tab;
+        
+        // Remove active class from all
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        e.target.classList.add('active');
+        document.getElementById(tabName).classList.add('active');
+      });
+    });
+
+    // Save button handlers
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if(e.target.textContent.includes('Save')) {
+          alert('✅ Settings saved successfully!');
+        }
+      });
+    });
+
+    // Test email button
+    document.querySelector('.btn-secondary').addEventListener('click', (e) => {
+      if(e.target.textContent.includes('Test')) {
+        alert('📧 Test email sent successfully!');
+      }
+    });
+
+    // Backup button
+    const backupBtn = document.querySelectorAll('.btn-secondary')[1];
+    if(backupBtn) {
+      backupBtn.addEventListener('click', () => {
+        alert('🔄 Creating backup... This may take a few minutes.');
+      });
+    }
+
+    // Clear cache button
+    const cacheBtn = document.querySelectorAll('.btn-secondary')[2];
+    if(cacheBtn) {
+      cacheBtn.addEventListener('click', () => {
+        alert('✅ Cache cleared successfully!');
+      });
+    }
+  </script>
+</body>
+</html>
