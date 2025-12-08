@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users - NEXUS VAULT</title>
+  <meta name="description" content="NEXUS VAULT Admin - Manage all users and their accounts.">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="stylesheet" href="styles.css?v=2">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">NEXUS//VAULT</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Store</a></li>
+        <li><a href="admin.html">Dashboard</a></li>
+      </ul>
+      <div class="nav-auth">
+        <span class="admin-badge">ADMIN MODE</span>
+        <a href="signin.html" class="btn btn-secondary">Sign Out</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Users Management -->
+  <main class="dashboard">
+    <div class="dashboard-grid">
+      <!-- Sidebar -->
+      <aside class="dashboard-sidebar">
+        <ul class="sidebar-menu">
+          <li><a href="admin.html">📊 Overview</a></li>
+          <li><a href="#">🎮 Games</a></li>
+          <li><a href="users.html" class="active">👥 Users</a></li>
+          <li><a href="#">💰 Revenue</a></li>
+          <li><a href="#">📈 Analytics</a></li>
+          <li><a href="#">🔔 Notifications</a></li>
+          <li><a href="#">⚙️ Settings</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content -->
+      <div class="dashboard-main">
+        <h1 class="dashboard-title">User Management</h1>
+
+        <!-- Controls Section -->
+        <div class="users-controls">
+          <div class="search-container">
+            <input 
+              type="text" 
+              class="search-input" 
+              placeholder="Search users by name, email, or ID..." 
+              id="userSearch"
+            >
+            <span class="search-icon">🔍</span>
+          </div>
+          <div class="control-buttons">
+            <button class="btn btn-primary">➕ Add User</button>
+            <button class="btn btn-secondary">📥 Export</button>
+          </div>
+        </div>
+
+        <!-- Users Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-card-icon">👥</span>
+            <span class="stat-card-value">45,892</span>
+            <span class="stat-card-label">Total Users</span>
+            <span class="stat-card-change positive">↑ +2,150 this month</span>
+          </div>
+          
+          <div class="stat-card accent-pink">
+            <span class="stat-card-icon">✓</span>
+            <span class="stat-card-value">12,456</span>
+            <span class="stat-card-label">Active Today</span>
+            <span class="stat-card-change positive">↑ +8.5% from yesterday</span>
+          </div>
+          
+          <div class="stat-card accent-yellow">
+            <span class="stat-card-icon">⏱️</span>
+            <span class="stat-card-value">3,214</span>
+            <span class="stat-card-label">Inactive (30d)</span>
+            <span class="stat-card-change negative">↓ -12% engagement</span>
+          </div>
+          
+          <div class="stat-card accent-green">
+            <span class="stat-card-icon">⭐</span>
+            <span class="stat-card-value">854</span>
+            <span class="stat-card-label">New This Week</span>
+            <span class="stat-card-change positive">↑ +45% growth rate</span>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="users-table-container">
+          <table class="users-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Join Date</th>
+                <th>Last Login</th>
+                <th>Purchases</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- User 1 -->
+              <tr class="user-row">
+                <td class="user-id">#10001</td>
+                <td class="user-name">ShadowNinja</td>
+                <td class="user-email">shadow.ninja@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-01-15</td>
+                <td class="user-date">2 hours ago</td>
+                <td class="user-purchases">28</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 2 -->
+              <tr class="user-row">
+                <td class="user-id">#10002</td>
+                <td class="user-name">CyberPhantom</td>
+                <td class="user-email">cyber.phantom@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-02-20</td>
+                <td class="user-date">12 minutes ago</td>
+                <td class="user-purchases">45</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 3 -->
+              <tr class="user-row">
+                <td class="user-id">#10003</td>
+                <td class="user-name">VortexGamer</td>
+                <td class="user-email">vortex.gamer@nexus.com</td>
+                <td>
+                  <span class="status-badge inactive">● Inactive</span>
+                </td>
+                <td class="user-date">2023-03-10</td>
+                <td class="user-date">8 days ago</td>
+                <td class="user-purchases">12</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 4 -->
+              <tr class="user-row">
+                <td class="user-id">#10004</td>
+                <td class="user-name">NeonKnight</td>
+                <td class="user-email">neon.knight@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-04-05</td>
+                <td class="user-date">1 hour ago</td>
+                <td class="user-purchases">67</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 5 -->
+              <tr class="user-row">
+                <td class="user-id">#10005</td>
+                <td class="user-name">EchoVortex</td>
+                <td class="user-email">echo.vortex@nexus.com</td>
+                <td>
+                  <span class="status-badge banned">● Banned</span>
+                </td>
+                <td class="user-date">2023-05-12</td>
+                <td class="user-date">N/A</td>
+                <td class="user-purchases">5</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn unban" title="Unban">✅</button>
+                </td>
+              </tr>
+
+              <!-- User 6 -->
+              <tr class="user-row">
+                <td class="user-id">#10006</td>
+                <td class="user-name">IceRaven</td>
+                <td class="user-email">ice.raven@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-06-08</td>
+                <td class="user-date">5 minutes ago</td>
+                <td class="user-purchases">33</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 7 -->
+              <tr class="user-row">
+                <td class="user-id">#10007</td>
+                <td class="user-name">QuantumEcho</td>
+                <td class="user-email">quantum.echo@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-07-22</td>
+                <td class="user-date">36 minutes ago</td>
+                <td class="user-purchases">91</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 8 -->
+              <tr class="user-row">
+                <td class="user-id">#10008</td>
+                <td class="user-name">SilentHunter</td>
+                <td class="user-email">silent.hunter@nexus.com</td>
+                <td>
+                  <span class="status-badge inactive">● Inactive</span>
+                </td>
+                <td class="user-date">2023-08-14</td>
+                <td class="user-date">15 days ago</td>
+                <td class="user-purchases">22</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 9 -->
+              <tr class="user-row">
+                <td class="user-id">#10009</td>
+                <td class="user-name">ThunderStrike</td>
+                <td class="user-email">thunder.strike@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-09-03</td>
+                <td class="user-date">3 minutes ago</td>
+                <td class="user-purchases">156</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+
+              <!-- User 10 -->
+              <tr class="user-row">
+                <td class="user-id">#10010</td>
+                <td class="user-name">PhoenixRise</td>
+                <td class="user-email">phoenix.rise@nexus.com</td>
+                <td>
+                  <span class="status-badge active">● Active</span>
+                </td>
+                <td class="user-date">2023-10-18</td>
+                <td class="user-date">47 minutes ago</td>
+                <td class="user-purchases">87</td>
+                <td class="user-actions">
+                  <button class="action-btn edit" title="Edit">✏️</button>
+                  <button class="action-btn view" title="View">👁️</button>
+                  <button class="action-btn ban" title="Ban">🚫</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="pagination-btn">← Previous</button>
+          <span class="pagination-info">Page 1 of 4589 (45,892 users)</span>
+          <button class="pagination-btn">Next →</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Search functionality
+    const searchInput = document.getElementById('userSearch');
+    const tableRows = document.querySelectorAll('.user-row');
+
+    searchInput.addEventListener('keyup', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      tableRows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(searchTerm) ? '' : 'none';
+      });
+    });
+
+    // Action button handlers
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const action = e.target.classList[1];
+        const userId = e.target.closest('tr').querySelector('.user-id').textContent;
+        
+        switch(action) {
+          case 'edit':
+            alert(`Edit user ${userId}`);
+            break;
+          case 'view':
+            alert(`View profile for ${userId}`);
+            break;
+          case 'ban':
+            if(confirm(`Ban user ${userId}?`)) {
+              alert(`User ${userId} has been banned`);
+            }
+            break;
+          case 'unban':
+            if(confirm(`Unban user ${userId}?`)) {
+              alert(`User ${userId} has been unbanned`);
+            }
+            break;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
