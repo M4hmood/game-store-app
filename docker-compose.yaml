@@ -33,6 +33,7 @@ services:
       MYSQL_PASSWORD: devpassword
     volumes:
       - db_data:/var/lib/mysql
+      - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   adminer:
     image: adminer
