@@ -385,249 +385,192 @@
   </style>
 </head>
 
-<body>
-  <!-- Navigation -->
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">NEXUS//VAULT</a>
-      <ul class="nav-links">
-        <li><a href="store.html">Store</a></li>
-        <li><a href="library.html">Library</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+<!-- Hero -->
+<div class="game-detail-hero">
+  <div class="hero-info">
+    <h1 class="game-detail-title">Cyberpunk 2077</h1>
+    <p class="hero-subtitle">An open-world action-adventure story set in the dark future of Night City</p>
+    <div class="game-meta-bar">
+      <div class="meta-item">
+        <span class="meta-icon">⚔️</span>
+        <span>Action RPG</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">📅</span>
+        <span>Dec 10, 2020</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">🎮</span>
+        <span>Single-player</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-icon">🔞</span>
+        <span>Mature 17+</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Main Content -->
+<div class="detail-container">
+  <div class="detail-main">
+    <!-- About -->
+    <div class="detail-card">
+      <h2 class="card-title">About This Game</h2>
+      <p class="card-text">
+        Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous
+        megalopolis obsessed with power, glamour, and ceaseless body modification.
+      </p>
+      <p class="card-text">
+        You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.
+        Customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you
+        make shape the story and the world around you.
+      </p>
+      <p class="card-text">
+        Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the
+        streets of Night City.
+      </p>
+      <div class="tags">
+        <span class="tag">Open World</span>
+        <span class="tag">RPG</span>
+        <span class="tag">Cyberpunk</span>
+        <span class="tag">First-Person</span>
+        <span class="tag">Futuristic</span>
+        <span class="tag">Story Rich</span>
+        <span class="tag">Shooter</span>
+        <span class="tag">Mature</span>
+      </div>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="detail-card">
+      <h2 class="card-title">Media Gallery</h2>
+      <div class="media-gallery">
+        <div class="media-item">
+          <img src="assets/images/cyber1.jpg" alt="Gameplay screenshot 1">
+        </div>
+        <div class="media-item">
+          <img src="assets/images/cyber2.jpg" alt="Gameplay screenshot 2">
+        </div>
+        <div class="media-item">
+          <img src="assets/images/cyber3.jpg" alt="Gameplay screenshot 3">
+        </div>
+        <div class="media-item">
+          <img src="assets/images/cyber4.jpg" alt="Gameplay screenshot 4">
+        </div>
+      </div>
+    </div>
+
+    <!-- System Requirements -->
+    <div class="detail-card">
+      <h2 class="card-title">System Requirements</h2>
+      <div class="specs-grid">
+        <div class="spec-column">
+          <h3>Minimum</h3>
+          <div class="spec-row">
+            <div class="spec-label">OS</div>
+            <div class="spec-value">Windows 10 64-bit</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Processor</div>
+            <div class="spec-value">Intel Core i5-3570K or AMD FX-8310</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Memory</div>
+            <div class="spec-value">8 GB RAM</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Graphics</div>
+            <div class="spec-value">NVIDIA GTX 970 or AMD Radeon RX 470</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Storage</div>
+            <div class="spec-value">70 GB available space</div>
+          </div>
+        </div>
+
+        <div class="spec-column">
+          <h3>Recommended</h3>
+          <div class="spec-row">
+            <div class="spec-label">OS</div>
+            <div class="spec-value">Windows 10 64-bit</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Processor</div>
+            <div class="spec-value">Intel Core i7-4790 or AMD Ryzen 3 3200G</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Memory</div>
+            <div class="spec-value">12 GB RAM</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Graphics</div>
+            <div class="spec-value">NVIDIA RTX 2060 or AMD Radeon RX 5700 XT</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-label">Storage</div>
+            <div class="spec-value">70 GB SSD</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="detail-card">
+      <h2 class="card-title">User Reviews</h2>
+      <div class="rating-box">
+        <div class="rating-score">9.2</div>
+        <div class="rating-info">
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-text">Very Positive (47,592 Reviews)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="purchase-sidebar">
+    <div class="buy-box">
+      <div class="pricing">
+        <div class="price-old">$59.99</div>
+        <div class="price-current">$49.99</div>
+        <span class="save-badge">SAVE 17%</span>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-primary btn-full btn-lg">Add to Cart</button>
+        <button class="btn btn-secondary btn-full">Add to Wishlist</button>
+      </div>
+
+      <ul class="game-info-list">
+        <li>
+          <span class="info-key">Developer</span>
+          <span class="info-val">CD PROJEKT RED</span>
+        </li>
+        <li>
+          <span class="info-key">Publisher</span>
+          <span class="info-val">CD PROJEKT RED</span>
+        </li>
+        <li>
+          <span class="info-key">Release Date</span>
+          <span class="info-val">Dec 10, 2020</span>
+        </li>
+        <li>
+          <span class="info-key">Platform</span>
+          <span class="info-val">Windows</span>
+        </li>
+        <li>
+          <span class="info-key">Languages</span>
+          <span class="info-val">15 Languages</span>
+        </li>
+        <li>
+          <span class="info-key">File Size</span>
+          <span class="info-val">70 GB</span>
+        </li>
       </ul>
-      <div class="nav-auth">
-        <a href="signin.html" class="btn btn-secondary">Sign In</a>
-        <a href="signup.html" class="btn btn-primary">Join Now</a>
-      </div>
     </div>
-  </nav>
-
-  <!-- Hero -->
-  <div class="game-detail-hero">
-    <div class="hero-info">
-      <h1 class="game-detail-title">Cyberpunk 2077</h1>
-      <p class="hero-subtitle">An open-world action-adventure story set in the dark future of Night City</p>
-      <div class="game-meta-bar">
-        <div class="meta-item">
-          <span class="meta-icon">⚔️</span>
-          <span>Action RPG</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-icon">📅</span>
-          <span>Dec 10, 2020</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-icon">🎮</span>
-          <span>Single-player</span>
-        </div>
-        <div class="meta-item">
-          <span class="meta-icon">🔞</span>
-          <span>Mature 17+</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <div class="detail-container">
-    <div class="detail-main">
-      <!-- About -->
-      <div class="detail-card">
-        <h2 class="card-title">About This Game</h2>
-        <p class="card-text">
-          Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous
-          megalopolis obsessed with power, glamour, and ceaseless body modification.
-        </p>
-        <p class="card-text">
-          You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.
-          Customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you
-          make shape the story and the world around you.
-        </p>
-        <p class="card-text">
-          Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the
-          streets of Night City.
-        </p>
-        <div class="tags">
-          <span class="tag">Open World</span>
-          <span class="tag">RPG</span>
-          <span class="tag">Cyberpunk</span>
-          <span class="tag">First-Person</span>
-          <span class="tag">Futuristic</span>
-          <span class="tag">Story Rich</span>
-          <span class="tag">Shooter</span>
-          <span class="tag">Mature</span>
-        </div>
-      </div>
-
-      <!-- Screenshots -->
-      <div class="detail-card">
-        <h2 class="card-title">Media Gallery</h2>
-        <div class="media-gallery">
-          <div class="media-item">
-            <img src="assets/images/cyber1.jpg" alt="Gameplay screenshot 1">
-          </div>
-          <div class="media-item">
-            <img src="assets/images/cyber2.jpg" alt="Gameplay screenshot 2">
-          </div>
-          <div class="media-item">
-            <img src="assets/images/cyber3.jpg" alt="Gameplay screenshot 3">
-          </div>
-          <div class="media-item">
-            <img src="assets/images/cyber4.jpg" alt="Gameplay screenshot 4">
-          </div>
-        </div>
-      </div>
-
-      <!-- System Requirements -->
-      <div class="detail-card">
-        <h2 class="card-title">System Requirements</h2>
-        <div class="specs-grid">
-          <div class="spec-column">
-            <h3>Minimum</h3>
-            <div class="spec-row">
-              <div class="spec-label">OS</div>
-              <div class="spec-value">Windows 10 64-bit</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Processor</div>
-              <div class="spec-value">Intel Core i5-3570K or AMD FX-8310</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Memory</div>
-              <div class="spec-value">8 GB RAM</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Graphics</div>
-              <div class="spec-value">NVIDIA GTX 970 or AMD Radeon RX 470</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Storage</div>
-              <div class="spec-value">70 GB available space</div>
-            </div>
-          </div>
-
-          <div class="spec-column">
-            <h3>Recommended</h3>
-            <div class="spec-row">
-              <div class="spec-label">OS</div>
-              <div class="spec-value">Windows 10 64-bit</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Processor</div>
-              <div class="spec-value">Intel Core i7-4790 or AMD Ryzen 3 3200G</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Memory</div>
-              <div class="spec-value">12 GB RAM</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Graphics</div>
-              <div class="spec-value">NVIDIA RTX 2060 or AMD Radeon RX 5700 XT</div>
-            </div>
-            <div class="spec-row">
-              <div class="spec-label">Storage</div>
-              <div class="spec-value">70 GB SSD</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reviews -->
-      <div class="detail-card">
-        <h2 class="card-title">User Reviews</h2>
-        <div class="rating-box">
-          <div class="rating-score">9.2</div>
-          <div class="rating-info">
-            <div class="rating-stars">★★★★★</div>
-            <div class="rating-text">Very Positive (47,592 Reviews)</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="purchase-sidebar">
-      <div class="buy-box">
-        <div class="pricing">
-          <div class="price-old">$59.99</div>
-          <div class="price-current">$49.99</div>
-          <span class="save-badge">SAVE 17%</span>
-        </div>
-
-        <div class="action-buttons">
-          <button class="btn btn-primary btn-full btn-lg">Add to Cart</button>
-          <button class="btn btn-secondary btn-full">Add to Wishlist</button>
-        </div>
-
-        <ul class="game-info-list">
-          <li>
-            <span class="info-key">Developer</span>
-            <span class="info-val">CD PROJEKT RED</span>
-          </li>
-          <li>
-            <span class="info-key">Publisher</span>
-            <span class="info-val">CD PROJEKT RED</span>
-          </li>
-          <li>
-            <span class="info-key">Release Date</span>
-            <span class="info-val">Dec 10, 2020</span>
-          </li>
-          <li>
-            <span class="info-key">Platform</span>
-            <span class="info-val">Windows</span>
-          </li>
-          <li>
-            <span class="info-key">Languages</span>
-            <span class="info-val">15 Languages</span>
-          </li>
-          <li>
-            <span class="info-key">File Size</span>
-            <span class="info-val">70 GB</span>
-          </li>
-        </ul>
-      </div>
-    </aside>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <h4>NEXUS//VAULT</h4>
-        <p class="footer-desc">Your gateway to the digital frontier. The ultimate destination for cyberpunk gaming.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="index.html">Store</a></li>
-          <li><a href="library.html">Library</a></li>
-          <li><a href="#">Wishlist</a></li>
-          <li><a href="#">Support</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Account</h4>
-        <ul>
-          <li><a href="signin.html">Sign In</a></li>
-          <li><a href="signup.html">Create Account</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a href="admin.html">Admin Portal</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Refund Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 NEXUS//VAULT. All rights reserved.</p>
-      <p>Powered by <span class="text-cyan">Neural Networks</span></p>
-    </div>
-  </footer>
+  </aside>
+</div>
 </body>
 
 </html>
