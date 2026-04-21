@@ -14,14 +14,14 @@
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo">NEXUS//VAULT</a>
+            <a href="/" class="nav-logo">NEXUS//VAULT</a>
             <ul class="nav-links">
-                <li><a href="store.html">Store</a></li>
-                <li><a href="admin.html">Dashboard</a></li>
+                <li><a href="/store">Store Frontend</a></li>
+                <li><a href="/admin">Dashboard</a></li>
             </ul>
             <div class="nav-auth">
                 <span class="admin-badge">ADMIN MODE</span>
-                <a href="signin.html" class="btn btn-secondary">Sign Out</a>
+                <a href="/logout" class="btn btn-secondary">Sign Out</a>
             </div>
         </div>
     </nav>
@@ -32,13 +32,11 @@
             <!-- Sidebar -->
             <aside class="dashboard-sidebar">
                 <ul class="sidebar-menu">
-                    <li><a href="admin.html">📊 Overview</a></li>
-                    <li><a href="games.html">🎮 Games</a></li>
-                    <li><a href="users.html">👥 Users</a></li>
-                    <li><a href="revenue.html" class="active">💰 Revenue</a></li>
-                    <li><a href="#">📈 Analytics</a></li>
-                    <li><a href="#">🔔 Notifications</a></li>
-                    <li><a href="settings.html">⚙️ Settings</a></li>
+                    <li><a href="/admin">📊 Overview</a></li>
+                    <li><a href="/admin/games/add">🎮 Games</a></li>
+                    <li><a href="/admin/users">👥 Users</a></li>
+                    <li><a href="/admin/revenue" class="active">💰 Revenue</a></li>
+                    <li><a href="/admin/settings">⚙️ Settings</a></li>
                 </ul>
             </aside>
 
@@ -50,30 +48,30 @@
                 <div class="stats-grid">
                     <div class="stat-card">
                         <span class="stat-card-icon">💰</span>
-                        <span class="stat-card-value">$284,521</span>
+                        <span class="stat-card-value">$<?= number_format($totalRevenue, 2) ?></span>
                         <span class="stat-card-label">Total Revenue</span>
-                        <span class="stat-card-change positive">↑ +12.5% all time</span>
+                        <span class="stat-card-change positive">Server Processed</span>
                     </div>
 
                     <div class="stat-card accent-green">
                         <span class="stat-card-icon">📈</span>
-                        <span class="stat-card-value">+12.5%</span>
-                        <span class="stat-card-label">Monthly Growth</span>
-                        <span class="stat-card-change positive">↑ +2.1% from last month</span>
+                        <span class="stat-card-value"><?= $totalOrdersCount ?></span>
+                        <span class="stat-card-label">Total Valid Orders</span>
+                        <span class="stat-card-change positive">Cart Transactions</span>
                     </div>
 
                     <div class="stat-card accent-yellow">
                         <span class="stat-card-icon">💳</span>
-                        <span class="stat-card-value">$42.50</span>
+                        <span class="stat-card-value">$<?= number_format($avgTransaction, 2) ?></span>
                         <span class="stat-card-label">Avg Transaction</span>
-                        <span class="stat-card-change positive">↑ +$1.20 increase</span>
+                        <span class="stat-card-change positive">Cart Average</span>
                     </div>
 
                     <div class="stat-card accent-pink">
                         <span class="stat-card-icon">💸</span>
-                        <span class="stat-card-value">2.1%</span>
+                        <span class="stat-card-value">0.0%</span>
                         <span class="stat-card-label">Refund Rate</span>
-                        <span class="stat-card-change negative">↓ -0.5% decrease</span>
+                        <span class="stat-card-change positive">No Chargebacks</span>
                     </div>
                 </div>
 
@@ -173,46 +171,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-mono">#TRX-8921</td>
-                                <td>John Doe</td>
-                                <td>Cyberpunk 2077</td>
-                                <td class="text-green">$59.99</td>
-                                <td>Dec 09, 2025</td>
-                                <td><span class="status-badge active">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-mono">#TRX-8920</td>
-                                <td>Alice Smith</td>
-                                <td>Neon Runners</td>
-                                <td class="text-green">$49.99</td>
-                                <td>Dec 09, 2025</td>
-                                <td><span class="status-badge active">Completed</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-mono">#TRX-8919</td>
-                                <td>Bob Wilson</td>
-                                <td>Void Protocol</td>
-                                <td class="text-yellow">$34.99</td>
-                                <td>Dec 08, 2025</td>
-                                <td><span class="status-badge pending">Processing</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-mono">#TRX-8918</td>
-                                <td>Carol Jones</td>
-                                <td>Mech Uprising</td>
-                                <td class="text-muted">$0.00</td>
-                                <td>Dec 08, 2025</td>
-                                <td><span class="status-badge inactive">Failed</span></td>
-                            </tr>
-                            <tr>
-                                <td class="text-mono">#TRX-8917</td>
-                                <td>David Miller</td>
-                                <td>Refund: Cyberpunk</td>
-                                <td class="text-pink">-$59.99</td>
-                                <td>Dec 08, 2025</td>
-                                <td><span class="status-badge inactive">Refunded</span></td>
-                            </tr>
+                            <?php if(!empty($orders)): ?>
+                                <?php foreach(array_slice($orders, 0, 5) as $order): ?>
+                                <tr>
+                                    <td class="text-mono">#TRX-<?= str_pad($order['id'], 4, '0', STR_PAD_LEFT) ?></td>
+                                    <td><?= htmlspecialchars($order['username'] ?? 'User #'.$order['user_id']) ?></td>
+                                    <td>Cart Bundle</td>
+                                    <td class="text-green">$<?= number_format($order['total_price'], 2) ?></td>
+                                    <td><?= htmlspecialchars($order['created_at']) ?></td>
+                                    <td><span class="status-badge active">Completed</span></td>
+                                </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr><td colspan="6">No recent transactions located in mainframe.</td></tr>
+                            <?php endif; ?>
                         </tbody>
                     </table>
                 </div>

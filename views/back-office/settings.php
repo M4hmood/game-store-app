@@ -14,14 +14,14 @@
   <!-- Navigation -->
   <nav class="nav">
     <div class="nav-container">
-      <a href="index.html" class="nav-logo">NEXUS//VAULT</a>
+      <a href="/" class="nav-logo">NEXUS//VAULT</a>
       <ul class="nav-links">
-        <li><a href="store.html">Store</a></li>
-        <li><a href="admin.html">Dashboard</a></li>
+        <li><a href="/store">Store Frontend</a></li>
+        <li><a href="/admin">Dashboard</a></li>
       </ul>
       <div class="nav-auth">
         <span class="admin-badge">ADMIN MODE</span>
-        <a href="signin.html" class="btn btn-secondary">Sign Out</a>
+        <a href="/logout" class="btn btn-secondary">Sign Out</a>
       </div>
     </div>
   </nav>
@@ -31,15 +31,13 @@
     <div class="dashboard-grid">
       <!-- Sidebar -->
       <aside class="dashboard-sidebar">
-        <ul class="sidebar-menu">
-          <li><a href="admin.html">📊 Overview</a></li>
-          <li><a href="games.html">🎮 Games</a></li>
-          <li><a href="users.html">👥 Users</a></li>
-          <li><a href="revenue.html">💰 Revenue</a></li>
-          <li><a href="#">📈 Analytics</a></li>
-          <li><a href="#">🔔 Notifications</a></li>
-          <li><a href="settings.html" class="active">⚙️ Settings</a></li>
-        </ul>
+                <ul class="sidebar-menu">
+                    <li><a href="/admin">📊 Overview</a></li>
+                    <li><a href="/admin/games/add">🎮 Games</a></li>
+                    <li><a href="/admin/users">👥 Users</a></li>
+                    <li><a href="/admin/revenue">💰 Revenue</a></li>
+                    <li><a href="/admin/settings" class="active">⚙️ Settings</a></li>
+                </ul>
       </aside>
 
       <!-- Main Content -->

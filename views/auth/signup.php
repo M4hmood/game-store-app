@@ -3,7 +3,13 @@
   <div class="form-box">
     <h1 class="form-title">JOIN THE NETWORK</h1>
 
-    <form action="#" method="post">
+    <?php if (isset($error)): ?>
+        <div style="background-color: rgba(255,0,0,0.2); border: 1px solid red; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+            <?= htmlspecialchars($error) ?>
+        </div>
+    <?php endif; ?>
+
+    <form action="/signup" method="post">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="firstname">First Name</label>

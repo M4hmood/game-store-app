@@ -2,8 +2,14 @@
 <main class="form-container">
   <div class="form-box">
     <h1 class="form-title">ACCESS TERMINAL</h1>
+    
+    <?php if (isset($error)): ?>
+        <div style="background-color: rgba(255,0,0,0.2); border: 1px solid red; color: white; padding: 10px; margin-bottom: 15px; border-radius: 5px;">
+            <?= htmlspecialchars($error) ?>
+        </div>
+    <?php endif; ?>
 
-    <form action="#" method="post">
+    <form action="/signin" method="post">
       <div class="form-group">
         <label class="form-label" for="email">Email Address</label>
         <input type="email" id="email" name="email" class="form-input" placeholder="runner@nexus.net" required>
