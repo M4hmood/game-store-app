@@ -36,23 +36,23 @@ switch ($path) {
     case '/store':
         (new GameController())->store();
         break;
-        
+
     case '/cart':
         (new CartController())->view();
         break;
-        
+
     case '/cart/add':
         (new CartController())->add();
         break;
-        
+
     case '/cart/remove':
         (new CartController())->remove();
         break;
-        
+
     case '/cart/checkout':
         (new CartController())->checkout();
         break;
-        
+
     case '/profile':
         (new GameController())->profile();
         break;
@@ -69,7 +69,7 @@ switch ($path) {
     case '/admin':
         (new AdminController())->index();
         break;
-        
+
     case '/admin/games/add':
         (new AdminController())->addGame();
         break;
@@ -77,15 +77,15 @@ switch ($path) {
     case '/admin/games/edit':
         (new AdminController())->editGame();
         break;
-        
+
     case '/admin/users':
         (new AdminController())->users();
         break;
-        
+
     case '/admin/users/edit':
         (new AdminController())->editUser();
         break;
-        
+
     case '/admin/users/delete':
         (new AdminController())->deleteUser();
         break;
@@ -93,15 +93,11 @@ switch ($path) {
     case '/admin/revenue':
         (new AdminController())->revenue();
         break;
-        
+
     case '/admin/settings':
         (new AdminController())->settings();
         break;
 
-    case '/admin/games/edit':
-        (new AdminController())->editGame();
-        break;
-        
     case '/admin/games/delete':
         (new AdminController())->deleteGame();
         break;
@@ -113,7 +109,7 @@ switch ($path) {
     case '/signup':
         (new AuthController())->signup();
         break;
-        
+
     case '/logout':
         (new AuthController())->logout();
         break;
