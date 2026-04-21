@@ -59,10 +59,19 @@ INSERT IGNORE INTO categories (id, name) VALUES
 (1, 'Action/Adventure'),
 (2, 'RPG'),
 (3, 'FPS'),
-(4, 'Strategy');
+(4, 'Strategy'),
+(5, 'Adventure'),
+(6, 'Fighting'),
+(7, 'Open World');
 
 -- Insert Games
 INSERT IGNORE INTO games (title, description, price, category_id, cover_image_path) VALUES 
-('Cyberpunk 2077', 'An open-world action-adventure story set in Night City.', 59.99, 2, '/assets/images/cyberpunk.jpg'),
-('The Witcher 3', 'You are Geralt of Rivia, mercenary monster slayer.', 39.99, 2, '/assets/images/witcher3.jpg'),
-('Valorant', 'A 5v5 character-based tactical shooter.', 0.00, 3, '/assets/images/valorant.jpg');
+('Red Dead Redemption 2', 'Outlaw Arthur Morgan rides through the fading Wild West.', 49.99, 5, '/assets/images/games/red-dead-redemption-2.jpg'),
+('Sekiro: Shadows Die Twice', 'Master katana combat and stealth in Sengoku-era Japan.', 59.99, 1, '/assets/images/games/sekiro.jpg'),
+('Mortal Kombat 11', 'Kombatants clash with brutal fatalities and a time-bending story.', 49.99, 6, '/assets/images/games/mortal-kombat-11.jpg'),
+('Far Cry 5', 'Liberate Hope County from a dangerous cult in a vast open world.', 49.99, 7, '/assets/images/games/far-cry-5.jpg'),
+('Ghost of Tsushima', 'Lead Jin Sakai against the Mongol invasion across a stunning open world.', 59.99, 1, '/assets/images/games/ghost-of-tsushima.jpg'),
+('Cyberpunk 2077', 'Forge your legend in Night City with high-tech weaponry and cyberware.', 49.99, 2, '/assets/images/games/cyberpunk-2077.jpg'),
+('The Last of Us Part II', 'Ellie''s journey of survival, revenge, and redemption in a ravaged world.', 69.99, 5, '/assets/images/games/the-last-of-us-2.jpg'),
+('Uncharted 4: A Thief''s End', 'Join Nathan Drake for one last treasure hunt across the globe.', 29.99, 5, '/assets/images/games/uncharted-4.jpg'),
+('Assassin''s Creed Valhalla', 'Lead Eivor''s Viking clan to forge a new saga across England.', 59.99, 1, '/assets/images/games/assassins-creed-valhalla.jpg');

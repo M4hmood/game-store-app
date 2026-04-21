@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkboxList && gameCards.length > 0) {
         const genres = new Set();
         gameCards.forEach(card => {
-            const desc = card.querySelector('.game-card-desc');
-            if (desc) genres.add(desc.textContent.trim());
+            const genreEl = card.querySelector('.tag');
+            if (genreEl) genres.add(genreEl.textContent.trim());
         });
 
         // Clear the hardcoded boxes
@@ -49,21 +49,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         gameCards.forEach(card => {
             const titleEl = card.querySelector('.game-card-title');
-            const descEl = card.querySelector('.game-card-desc');
+            const genreEl = card.querySelector('.tag');
             
-            if (!titleEl || !descEl) return;
+            if (!titleEl || !genreEl) return;
 
             const title = titleEl.textContent.toLowerCase();
-            const desc = descEl.textContent;
+            const genre = genreEl.textContent.trim();
 
             const matchesSearch = title.includes(searchTerm);
-            const matchesGenre = checkedGenres.length === 0 || checkedGenres.includes(desc);
+            const matchesGenre = checkedGenres.length === 0 || checkedGenres.includes(genre);
+
+            const targetElement = card.parentElement.tagName === 'A' ? card.parentElement : card;
 
             if (matchesSearch && matchesGenre) {
-                card.style.display = 'block';
+                targetElement.style.display = 'block';
                 gamesVisible++;
             } else {
-                card.style.display = 'none';
+                targetElement.style.display = 'none';
             }
         });
 

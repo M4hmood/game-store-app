@@ -37,6 +37,10 @@ switch ($path) {
         (new GameController())->store();
         break;
 
+    case '/game':
+        (new GameController())->preview();
+        break;
+
     case '/cart':
         (new CartController())->view();
         break;

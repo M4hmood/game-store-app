@@ -1,411 +1,333 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// $game is passed from GameController::preview()
+// $isOwned is passed from GameController::preview()
+$title = htmlspecialchars($game['title']);
+$description = htmlspecialchars($game['description'] ?? '');
+$price = htmlspecialchars($game['price']);
+$category = htmlspecialchars($game['category_name'] ?? 'Uncategorized');
+$coverImage = htmlspecialchars($game['cover_image_path'] ?: '/assets/images/games/placeholder.jpg');
+$gameId = (int)$game['id'];
+?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyberpunk 2077 - NEXUS VAULT</title>
-  <link rel="icon" type="image/png" href="assets/icons/controller.png">
-  <link rel="stylesheet" href="styles.css?v=2">
-  <style>
-    .game-detail-hero {
-      position: relative;
-      height: 70vh;
-      min-height: 500px;
-      margin-top: 80px;
-      background: linear-gradient(to bottom, rgba(13, 13, 20, 0) 0%, var(--bg-primary) 100%),
-        url('https://cdn.cloudflare.steamstatic.com/steam/apps/1091500/ss_b6e0c6d6c0c393477cc717ce1c448ecdf1df51f5.1920x1080.jpg') center/cover;
-      display: flex;
-      align-items: flex-end;
+<style>
+  .game-detail-hero {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    margin-top: 80px;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(to bottom, rgba(13, 13, 20, 0) 0%, var(--bg-primary) 100%);
+  }
+
+  .game-detail-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('<?= $coverImage ?>');
+    background-size: cover;
+    background-position: center top;
+    opacity: 0.25;
+    z-index: 0;
+    filter: blur(2px);
+  }
+
+  .hero-info {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .game-detail-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: var(--space-md);
+    line-height: 1.1;
+  }
+
+  .game-meta-bar {
+    display: flex;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: var(--space-lg);
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .meta-icon {
+    color: var(--neon-cyan);
+  }
+
+  .detail-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-lg);
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .detail-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .detail-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 245, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .detail-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-cyber);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .detail-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-title {
+    font-size: 1.8rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .card-text {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+  }
+
+  .cover-showcase {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .cover-showcase:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--glow-cyan);
+    border-color: var(--neon-cyan);
+  }
+
+  .cover-showcase img {
+    width: 100%;
+    display: block;
+  }
+
+  .purchase-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .buy-box {
+    background: var(--bg-card);
+    border: 2px solid rgba(0, 245, 255, 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.15);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .buy-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: scale(1);
     }
-
-    .game-detail-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('assets/images/cyber1.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-      /* Low opacity - adjust between 0.1 to 0.3 */
-      z-index: 0;
+    50% {
+      opacity: 0.8;
+      transform: scale(1.1);
     }
+  }
 
-    .hero-info {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: var(--space-xl) var(--space-lg);
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
+  .buy-box>* {
+    position: relative;
+    z-index: 1;
+  }
 
-    .game-detail-title {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      margin-bottom: var(--space-md);
-      line-height: 1.1;
-    }
+  .pricing {
+    text-align: center;
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.15);
+    margin-bottom: var(--space-xl);
+  }
 
-    .game-meta-bar {
-      display: flex;
-      gap: var(--space-lg);
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: var(--space-lg);
-    }
+  .price-current {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: var(--gradient-cyber);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: var(--font-mono);
+    display: block;
+    line-height: 1;
+    margin: var(--space-md) 0;
+    text-shadow: 0 0 40px rgba(0, 245, 255, 0.4);
+  }
 
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: var(--space-sm);
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
 
-    .meta-icon {
-      color: var(--neon-cyan);
-    }
+  .game-info-list {
+    list-style: none;
+  }
 
+  .game-info-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.05);
+    font-size: 0.9rem;
+  }
+
+  .info-key {
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-val {
+    color: var(--text-primary);
+    font-weight: 600;
+    text-align: right;
+  }
+
+  .rating-box {
+    background: rgba(0, 245, 255, 0.05);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .rating-score {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: var(--font-mono);
+    background: var(--gradient-electric);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .rating-info {
+    flex: 1;
+  }
+
+  .rating-stars {
+    color: var(--neon-yellow);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+    text-shadow: 0 0 10px rgba(249, 240, 2, 0.5);
+  }
+
+  .rating-text {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .owned-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(0, 245, 255, 0.1);
+    border: 1px solid rgba(0, 245, 255, 0.3);
+    border-radius: var(--radius-md);
+    color: var(--neon-cyan);
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    width: 100%;
+    justify-content: center;
+  }
+
+  @media (max-width: 1200px) {
     .detail-container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: var(--space-xl) var(--space-lg);
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: var(--space-xl);
-      align-items: start;
-    }
-
-    .detail-main {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xl);
-    }
-
-    .detail-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(0, 245, 255, 0.1);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .detail-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-cyber);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .detail-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-title {
-      font-size: 1.8rem;
-      margin-bottom: var(--space-lg);
-    }
-
-    .card-text {
-      color: var(--text-secondary);
-      line-height: 1.8;
-      margin-bottom: var(--space-md);
-    }
-
-    .media-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: var(--space-md);
-    }
-
-    .media-item {
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(0, 245, 255, 0.2);
-      cursor: pointer;
-      transition: all 0.4s ease;
-      position: relative;
-    }
-
-    .media-item::after {
-      content: '🔍';
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      background: rgba(0, 0, 0, 0.7);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .media-item:hover::after {
-      opacity: 1;
-    }
-
-    .media-item:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--glow-cyan);
-      border-color: var(--neon-cyan);
-    }
-
-    .media-item img {
-      width: 100%;
-      display: block;
-    }
-
-    .specs-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-xl);
-    }
-
-    .spec-column h3 {
-      font-size: 1.1rem;
-      color: var(--neon-cyan);
-      margin-bottom: var(--space-lg);
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
-
-    .spec-row {
-      margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-md);
-      border-bottom: 1px solid rgba(0, 245, 255, 0.05);
-    }
-
-    .spec-row:last-child {
-      border-bottom: none;
-    }
-
-    .spec-label {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: var(--font-display);
-      margin-bottom: var(--space-xs);
-    }
-
-    .spec-value {
-      color: var(--text-primary);
-      font-weight: 500;
-      font-size: 0.95rem;
+      grid-template-columns: 1fr;
     }
 
     .purchase-sidebar {
-      position: sticky;
-      top: 100px;
+      position: static;
     }
+  }
 
-    .buy-box {
-      background: var(--bg-card);
-      border: 2px solid rgba(0, 245, 255, 0.3);
-      border-radius: var(--radius-lg);
-      padding: var(--space-xl);
-      box-shadow: 0 0 40px rgba(0, 245, 255, 0.15);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .buy-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.5;
-        transform: scale(1);
-      }
-
-      50% {
-        opacity: 0.8;
-        transform: scale(1.1);
-      }
-    }
-
-    .buy-box>* {
-      position: relative;
-      z-index: 1;
-    }
-
-    .pricing {
-      text-align: center;
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid rgba(0, 245, 255, 0.15);
-      margin-bottom: var(--space-xl);
-    }
-
-    .price-old {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      text-decoration: line-through;
-      font-family: var(--font-mono);
-      margin-bottom: var(--space-sm);
-    }
-
-    .price-current {
-      font-size: 3.5rem;
-      font-weight: 900;
-      background: var(--gradient-cyber);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-family: var(--font-mono);
-      display: block;
-      line-height: 1;
-      margin: var(--space-md) 0;
-      text-shadow: 0 0 40px rgba(0, 245, 255, 0.4);
-    }
-
-    .save-badge {
-      display: inline-block;
-      background: var(--gradient-sunset);
-      color: var(--text-primary);
-      padding: var(--space-sm) var(--space-lg);
-      border-radius: var(--radius-md);
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: 0.9rem;
-      letter-spacing: 0.1em;
-      box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3);
-    }
-
-    .action-buttons {
-      display: flex;
+  @media (max-width: 768px) {
+    .game-meta-bar {
       flex-direction: column;
-      gap: var(--space-md);
-      margin-bottom: var(--space-xl);
+      align-items: flex-start;
+      gap: var(--space-sm);
     }
-
-    .game-info-list {
-      list-style: none;
-    }
-
-    .game-info-list li {
-      display: flex;
-      justify-content: space-between;
-      padding: var(--space-md) 0;
-      border-bottom: 1px solid rgba(0, 245, 255, 0.05);
-      font-size: 0.9rem;
-    }
-
-    .info-key {
-      color: var(--text-muted);
-      font-family: var(--font-display);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .info-val {
-      color: var(--text-primary);
-      font-weight: 600;
-      text-align: right;
-    }
-
-    .rating-box {
-      background: rgba(0, 245, 255, 0.05);
-      border: 1px solid rgba(0, 245, 255, 0.2);
-      border-radius: var(--radius-md);
-      padding: var(--space-lg);
-      display: flex;
-      align-items: center;
-      gap: var(--space-lg);
-    }
-
-    .rating-score {
-      font-size: 3.5rem;
-      font-weight: 900;
-      font-family: var(--font-mono);
-      background: var(--gradient-electric);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1;
-    }
-
-    .rating-info {
-      flex: 1;
-    }
-
-    .rating-stars {
-      color: var(--neon-yellow);
-      font-size: 1.3rem;
-      margin-bottom: var(--space-sm);
-      text-shadow: 0 0 10px rgba(249, 240, 2, 0.5);
-    }
-
-    .rating-text {
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    @media (max-width: 1200px) {
-      .detail-container {
-        grid-template-columns: 1fr;
-      }
-
-      .purchase-sidebar {
-        position: static;
-      }
-
-      .specs-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .game-meta-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--space-sm);
-      }
-    }
-  </style>
-</head>
+  }
+</style>
 
 <!-- Hero -->
 <div class="game-detail-hero">
   <div class="hero-info">
-    <h1 class="game-detail-title">Cyberpunk 2077</h1>
-    <p class="hero-subtitle">An open-world action-adventure story set in the dark future of Night City</p>
+    <h1 class="game-detail-title"><?= $title ?></h1>
+    <p class="hero-subtitle"><?= $description ?></p>
     <div class="game-meta-bar">
       <div class="meta-item">
-        <span class="meta-icon">⚔️</span>
-        <span>Action RPG</span>
-      </div>
-      <div class="meta-item">
-        <span class="meta-icon">📅</span>
-        <span>Dec 10, 2020</span>
+        <span class="meta-icon">🏷️</span>
+        <span><?= $category ?></span>
       </div>
       <div class="meta-item">
         <span class="meta-icon">🎮</span>
         <span>Single-player</span>
       </div>
       <div class="meta-item">
-        <span class="meta-icon">🔞</span>
-        <span>Mature 17+</span>
+        <span class="meta-icon">💰</span>
+        <span>$<?= $price ?></span>
       </div>
     </div>
   </div>
@@ -418,111 +340,30 @@
     <div class="detail-card">
       <h2 class="card-title">About This Game</h2>
       <p class="card-text">
-        Cyberpunk 2077 is an open-world, action-adventure RPG set in the dark future of Night City — a dangerous
-        megalopolis obsessed with power, glamour, and ceaseless body modification.
-      </p>
-      <p class="card-text">
-        You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality.
-        Customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you
-        make shape the story and the world around you.
-      </p>
-      <p class="card-text">
-        Become a cyberpunk, an urban mercenary equipped with cybernetic enhancements and build your legend on the
-        streets of Night City.
+        <?= $description ?>
       </p>
       <div class="tags">
-        <span class="tag">Open World</span>
-        <span class="tag">RPG</span>
-        <span class="tag">Cyberpunk</span>
-        <span class="tag">First-Person</span>
-        <span class="tag">Futuristic</span>
-        <span class="tag">Story Rich</span>
-        <span class="tag">Shooter</span>
-        <span class="tag">Mature</span>
+        <span class="tag"><?= $category ?></span>
       </div>
     </div>
 
-    <!-- Screenshots -->
+    <!-- Game Cover -->
     <div class="detail-card">
-      <h2 class="card-title">Media Gallery</h2>
-      <div class="media-gallery">
-        <div class="media-item">
-          <img src="assets/images/cyber1.jpg" alt="Gameplay screenshot 1">
-        </div>
-        <div class="media-item">
-          <img src="assets/images/cyber2.jpg" alt="Gameplay screenshot 2">
-        </div>
-        <div class="media-item">
-          <img src="assets/images/cyber3.jpg" alt="Gameplay screenshot 3">
-        </div>
-        <div class="media-item">
-          <img src="assets/images/cyber4.jpg" alt="Gameplay screenshot 4">
-        </div>
-      </div>
-    </div>
-
-    <!-- System Requirements -->
-    <div class="detail-card">
-      <h2 class="card-title">System Requirements</h2>
-      <div class="specs-grid">
-        <div class="spec-column">
-          <h3>Minimum</h3>
-          <div class="spec-row">
-            <div class="spec-label">OS</div>
-            <div class="spec-value">Windows 10 64-bit</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Processor</div>
-            <div class="spec-value">Intel Core i5-3570K or AMD FX-8310</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Memory</div>
-            <div class="spec-value">8 GB RAM</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Graphics</div>
-            <div class="spec-value">NVIDIA GTX 970 or AMD Radeon RX 470</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Storage</div>
-            <div class="spec-value">70 GB available space</div>
-          </div>
-        </div>
-
-        <div class="spec-column">
-          <h3>Recommended</h3>
-          <div class="spec-row">
-            <div class="spec-label">OS</div>
-            <div class="spec-value">Windows 10 64-bit</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Processor</div>
-            <div class="spec-value">Intel Core i7-4790 or AMD Ryzen 3 3200G</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Memory</div>
-            <div class="spec-value">12 GB RAM</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Graphics</div>
-            <div class="spec-value">NVIDIA RTX 2060 or AMD Radeon RX 5700 XT</div>
-          </div>
-          <div class="spec-row">
-            <div class="spec-label">Storage</div>
-            <div class="spec-value">70 GB SSD</div>
-          </div>
-        </div>
+      <h2 class="card-title">Game Cover</h2>
+      <div class="cover-showcase">
+        <img src="<?= $coverImage ?>" alt="<?= $title ?> cover"
+          onerror="this.src='https://placehold.co/600x400/101015/00f5ff?text=<?= urlencode($game['title']) ?>'">
       </div>
     </div>
 
     <!-- Reviews -->
     <div class="detail-card">
-      <h2 class="card-title">User Reviews</h2>
+      <h2 class="card-title">Community Rating</h2>
       <div class="rating-box">
-        <div class="rating-score">9.2</div>
+        <div class="rating-score">9.0</div>
         <div class="rating-info">
           <div class="rating-stars">★★★★★</div>
-          <div class="rating-text">Very Positive (47,592 Reviews)</div>
+          <div class="rating-text">Very Positive</div>
         </div>
       </div>
     </div>
@@ -532,45 +373,34 @@
   <aside class="purchase-sidebar">
     <div class="buy-box">
       <div class="pricing">
-        <div class="price-old">$59.99</div>
-        <div class="price-current">$49.99</div>
-        <span class="save-badge">SAVE 17%</span>
+        <div class="price-current">$<?= $price ?></div>
       </div>
 
       <div class="action-buttons">
-        <button class="btn btn-primary btn-full btn-lg">Add to Cart</button>
-        <button class="btn btn-secondary btn-full">Add to Wishlist</button>
+        <?php if ($isOwned): ?>
+          <div class="owned-badge">✓ Already in Library</div>
+        <?php else: ?>
+          <form action="/cart/add" method="POST" style="margin:0;">
+            <input type="hidden" name="game_id" value="<?= $gameId ?>">
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Add to Cart</button>
+          </form>
+        <?php endif; ?>
       </div>
 
       <ul class="game-info-list">
         <li>
-          <span class="info-key">Developer</span>
-          <span class="info-val">CD PROJEKT RED</span>
-        </li>
-        <li>
-          <span class="info-key">Publisher</span>
-          <span class="info-val">CD PROJEKT RED</span>
-        </li>
-        <li>
-          <span class="info-key">Release Date</span>
-          <span class="info-val">Dec 10, 2020</span>
+          <span class="info-key">Genre</span>
+          <span class="info-val"><?= $category ?></span>
         </li>
         <li>
           <span class="info-key">Platform</span>
           <span class="info-val">Windows</span>
         </li>
         <li>
-          <span class="info-key">Languages</span>
-          <span class="info-val">15 Languages</span>
-        </li>
-        <li>
-          <span class="info-key">File Size</span>
-          <span class="info-val">70 GB</span>
+          <span class="info-key">Game ID</span>
+          <span class="info-val">#<?= $gameId ?></span>
         </li>
       </ul>
     </div>
   </aside>
 </div>
-</body>
-
-</html>
