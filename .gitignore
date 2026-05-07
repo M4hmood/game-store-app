@@ -1,0 +1,66 @@
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# PHP
+vendor/
+composer.lock
+.php_cs
+.php_cs.cache
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database
+*.sqlite
+*.sqlite3
+*.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Node modules (if using npm/webpack)
+node_modules/
+package-lock.json
+yarn.lock
+dist/
+
+# Build files
+build/
+.cache/
+
+# IDE specific
+*.sublime-workspace
+.vscode/settings.json
+.vscode/extensions.json
+
+# Docker (if needed for local development secrets)
+.env.docker
+docker-compose.override.yaml
+
+# Session files
+sessions/
+*.session
+
+# Cache files
+.cache
+*.cache
+
