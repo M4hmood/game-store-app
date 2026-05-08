@@ -54,6 +54,10 @@ CREATE TABLE IF NOT EXISTS order_items (
 INSERT IGNORE INTO users (username, email, password, role) VALUES 
 ('admin_zouba', 'admin@gamestore.test', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
 
+-- Insert another Admin User (Password is 'Mahmoud03' hashed with bcrypt)
+INSERT IGNORE INTO users (username, email, password, role) VALUES
+('admin_mahmoud', 'admin@gamestore.local', '$2y$10$K79.iTHSbP1RwgQHgCd57.LNffqeR5xzY81/sjJsZGTct2dLb0oB2', 'admin');
+
 -- Insert Categories
 INSERT IGNORE INTO categories (id, name) VALUES 
 (1, 'Action/Adventure'),
