@@ -9,17 +9,34 @@ services:
     volumes:
       - .:/var/www/html
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-gamestore_db}
+      - MYSQL_USER=${MYSQL_USER:-devuser}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-devpassword}
     command: >
       bash -c "
-      sed -ri -e 's!/var/www/html!$${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+      apt-get update
+      && apt-get install -y zlib1g-dev libpng-dev libjpeg-dev libcurl4-openssl-dev curl
+      && sed -ri -e 's!/var/www/html!$${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
       && sed -ri -e 's!/var/www/!$${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
       && a2enmod rewrite
-      && docker-php-ext-install pdo pdo_mysql
+      && docker-php-ext-install pdo pdo_mysql gd curl
       && apache2-foreground
       "
+    restart: unless-stopped
+    networks:
+      - gamestore_network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 180s
 
   db:
     image: mysql:8.0
@@ -27,13 +44,23 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: gamestore_db
-      MYSQL_USER: devuser
-      MYSQL_PASSWORD: devpassword
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-gamestore_db}
+      MYSQL_USER: ${MYSQL_USER:-devuser}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-devpassword}
     volumes:
       - db_data:/var/lib/mysql
       - ./config/init.sql:/docker-entrypoint-initdb.d/init.sql
+    restart: unless-stopped
+    networks:
+      - gamestore_network
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   adminer:
     image: adminer
@@ -41,7 +68,15 @@ services:
     ports:
       - "8081:8080"
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - gamestore_network
+
+networks:
+  gamestore_network:
+    driver: bridge
 
 volumes:
   db_data:
