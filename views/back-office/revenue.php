@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revenue Analytics - NEXUS VAULT</title>
-    <meta name="description" content="Financial analytics and revenue tracking for NEXUS VAULT.">
-    <link rel="icon" type="image/png" href="../assets/icons/controller.png">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Revenue &mdash; NEXUS//VAULT Admin</title>
+    <meta name="description" content="Revenue analytics for NEXUS//VAULT.">
+    <link rel="icon" type="image/png" href="/assets/icons/controller.png">
+    <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
@@ -20,8 +20,8 @@
                 <li><a href="/admin">Dashboard</a></li>
             </ul>
             <div class="nav-auth">
-                <span class="admin-badge">ADMIN MODE</span>
-                <a href="/logout" class="btn btn-secondary">Sign Out</a>
+                <span class="admin-badge">Admin</span>
+                <a href="/logout" class="btn btn-secondary">Sign out</a>
             </div>
         </div>
     </nav>

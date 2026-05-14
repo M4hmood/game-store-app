@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard - NEXUS VAULT</title>
+  <title>Admin Dashboard &mdash; NEXUS//VAULT</title>
   <link rel="icon" type="image/png" href="/assets/icons/controller.png">
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
@@ -40,7 +40,7 @@
 
       <!-- Main Content -->
       <div class="dashboard-main">
-        <h1 class="dashboard-title">Control Center</h1>
+        <h1 class="dashboard-title">Overview</h1>
 
         <!-- Stats Cards -->
         <div class="stats-grid" style="margin-bottom: 30px;">
@@ -89,8 +89,7 @@
                     </td>
                     <td>
                       <div style="display:flex; gap: 5px;">
-                        <button class="btn btn-sm"
-                          style="background:#00d2ff; color:black; border:none; padding: 5px 10px; cursor: pointer;"
+                        <button class="btn btn-sm btn-primary"
                           onclick="openEditUserModal(<?= $user['id'] ?>, '<?= htmlspecialchars(addslashes($user['username'])) ?>', '<?= htmlspecialchars(addslashes($user['email'])) ?>', '<?= htmlspecialchars(addslashes($user['role'] ?? 'client')) ?>')">Edit</button>
                       </div>
                     </td>
@@ -121,8 +120,7 @@
                     <td>
                       <form method="POST" action="/admin/games/delete" style="margin: 0;">
                         <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
-                        <button class="btn btn-sm"
-                          style="background: red; color: white; border:none; padding: 5px 10px; cursor: pointer;">Delete</button>
+                        <button class="btn btn-sm btn-danger">Delete</button>
                       </form>
                     </td>
                   </tr>
@@ -137,43 +135,36 @@
   </main>
 
   <div id="edit-user-modal"
-    style="display: none; position: fixed; inset: 0; background: rgba(10,10,15,0.9); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(5px);">
+    style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 2000; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
     <div class="modal-content"
-      style="background: var(--bg-secondary); padding: 30px; border-radius: 8px; border: 1px solid var(--neon-cyan); max-width: 500px; width: 100%; position: relative; box-shadow: var(--glow-cyan);">
+      style="background: var(--bg-card); padding: 28px; border-radius: var(--radius-lg); border: 1px solid var(--border); max-width: 500px; width: calc(100% - 32px); position: relative; box-shadow: var(--shadow-lg);">
       <button class="close-btn"
-        style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: white; cursor: pointer; font-size: 1.5rem;"
+        style="position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--text-secondary); cursor: pointer; font-size: 1.5rem; line-height: 1;"
         onclick="document.getElementById('edit-user-modal').style.display='none'">&times;</button>
-      <h2 style="color:var(--neon-cyan); margin-bottom: 20px; font-family: var(--font-display);">Modify User Details
-      </h2>
+      <h2 style="color: var(--text-primary); margin-bottom: 20px; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;">Edit user</h2>
 
       <form action="/admin/users/edit" method="POST">
         <input type="hidden" name="user_id" id="edit-user-id">
 
-        <div>
-          <label style="color:var(--text-secondary); display:block; margin-bottom:5px;">Username</label>
-          <input type="text" name="username" id="edit-user-username" class="admin-input"
-            style="width: 100%; padding: 10px; margin-bottom: 15px; background: #000; color: #fff; border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 4px;"
-            required>
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" id="edit-user-username" class="form-input" required>
         </div>
 
-        <div>
-          <label style="color:var(--text-secondary); display:block; margin-bottom:5px;">Email</label>
-          <input type="email" name="email" id="edit-user-email" class="admin-input"
-            style="width: 100%; padding: 10px; margin-bottom: 15px; background: #000; color: #fff; border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 4px;"
-            required>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" id="edit-user-email" class="form-input" required>
         </div>
 
-        <div>
-          <label style="color:var(--text-secondary); display:block; margin-bottom:5px;">System Role</label>
-          <select name="role" id="edit-user-role" class="admin-input"
-            style="width: 100%; padding: 10px; margin-bottom: 15px; background: #000; color: #fff; border: 1px solid rgba(0, 245, 255, 0.3); border-radius: 4px;">
+        <div class="form-group">
+          <label class="form-label">Role</label>
+          <select name="role" id="edit-user-role" class="form-input">
             <option value="client">Client</option>
             <option value="admin">Admin</option>
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-full" style="width: 100%; margin-top: 10px;">Update
-          User</button>
+        <button type="submit" class="btn btn-primary btn-full" style="margin-top: 8px;">Save changes</button>
       </form>
     </div>
   </div>

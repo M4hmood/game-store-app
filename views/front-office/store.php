@@ -32,10 +32,10 @@
             <?php foreach ($games as $game): ?>
               <a href="/game?id=<?= $game['id'] ?>" style="text-decoration: none; color: inherit;">
               <article class="game-card">
-                <img src="<?= htmlspecialchars($game['cover_image_path'] ?: 'https://placehold.co/600x400/101015/00f5ff?text=Game') ?>" 
+                <img src="<?= htmlspecialchars($game['cover_image_path'] ?: 'https://placehold.co/600x400/161b22/8b949e?text=Game') ?>" 
                      alt="<?= htmlspecialchars($game['title']) ?> cover" 
                      class="game-card-image"
-                     onerror="this.src='https://placehold.co/600x400/101015/00f5ff?text=<?= urlencode($game['title']) ?>'">
+                     onerror="this.src='https://placehold.co/600x400/161b22/8b949e?text=<?= urlencode($game['title']) ?>'">
                 <div class="game-card-content">
                   <h3 class="game-card-title"><?= htmlspecialchars($game['title']) ?></h3>
                   <p class="game-card-desc"><?= htmlspecialchars($game['description'] ?? '') ?></p>

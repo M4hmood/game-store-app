@@ -49,5 +49,38 @@ class User {
         $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
         return $stmt->execute(['id' => $id]);
     }
+
+    public function findById($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
+    }
+
+    public function updateProfile($id, $username, $email) {
+        $stmt = $this->conn->prepare("UPDATE users SET username = :username, email = :email WHERE id = :id");
+        return $stmt->execute([
+            'id' => $id,
+            'username' => $username,
+            'email' => $email
+        ]);
+    }
+
+    public function updatePassword($id, $password) {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $this->conn->prepare("UPDATE users SET password = :password WHERE id = :id");
+        return $stmt->execute(['id' => $id, 'password' => $hash]);
+    }
+
+    public function isUsernameTakenByOther($username, $id) {
+        $stmt = $this->conn->prepare("SELECT id FROM users WHERE username = :username AND id <> :id LIMIT 1");
+        $stmt->execute(['username' => $username, 'id' => $id]);
+        return (bool)$stmt->fetch();
+    }
+
+    public function isEmailTakenByOther($email, $id) {
+        $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = :email AND id <> :id LIMIT 1");
+        $stmt->execute(['email' => $email, 'id' => $id]);
+        return (bool)$stmt->fetch();
+    }
 }
 ?>

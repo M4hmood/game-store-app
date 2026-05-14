@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - NEXUS VAULT Admin</title>
-  <meta name="description" content="NEXUS VAULT Admin - Configure system settings and preferences.">
-  <link rel="icon" type="image/png" href="../assets/icons/controller.png">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <title>Settings &mdash; NEXUS//VAULT Admin</title>
+  <meta name="description" content="NEXUS//VAULT Admin - Configure system settings and preferences.">
+  <link rel="icon" type="image/png" href="/assets/icons/controller.png">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
 <body>
@@ -20,8 +20,8 @@
         <li><a href="/admin">Dashboard</a></li>
       </ul>
       <div class="nav-auth">
-        <span class="admin-badge">ADMIN MODE</span>
-        <a href="/logout" class="btn btn-secondary">Sign Out</a>
+        <span class="admin-badge">Admin</span>
+        <a href="/logout" class="btn btn-secondary">Sign out</a>
       </div>
     </div>
   </nav>
@@ -60,7 +60,7 @@
 
             <div class="settings-group">
               <label for="storeName" class="setting-label">Store Name</label>
-              <input type="text" id="storeName" class="settings-input" value="NEXUS VAULT"
+              <input type="text" id="storeName" class="settings-input" value="NEXUS//VAULT"
                 placeholder="Enter store name">
               <p class="setting-description">The name displayed across your store</p>
             </div>

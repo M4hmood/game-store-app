@@ -1,7 +1,7 @@
 <!-- Library Header -->
 <header class="library-header">
-  <h1>MY VAULT</h1>
-  <p class="library-welcome">Welcome back, <span class="text-cyan">RUNNER_2077</span>. Your collection awaits.</p>
+  <h1>My Library</h1>
+  <p class="library-welcome">Welcome back<?php if (isset($_SESSION['username'])): ?>, <span class="text-cyan"><?= htmlspecialchars($_SESSION['username']) ?></span><?php endif; ?>. Your collection is ready when you are.</p>
   <div class="library-stats">
     <div class="stat-item">
       <span class="stat-value">24</span>

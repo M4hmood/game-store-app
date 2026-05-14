@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/../models/Game.php';
 require_once __DIR__ . '/../models/Order.php';
+require_once __DIR__ . '/../models/PaymentMethod.php';
 
 class CartController {
     public function __construct() {
@@ -21,6 +22,15 @@ class CartController {
                 $totalPrice += $game['price'];
             }
         }
+
+        $paymentMethods = [];
+        if (isset($_SESSION['user_id'])) {
+            $paymentModel = new PaymentMethod();
+            $paymentMethods = $paymentModel->getByUser($_SESSION['user_id']);
+        }
+
+        $cartError = $_SESSION['cart_error'] ?? null;
+        unset($_SESSION['cart_error']);
 
         require __DIR__ . '/../views/front-office/cart.php';
     }
@@ -62,17 +72,31 @@ class CartController {
                 exit;
             }
 
+            $paymentMethodId = (int)($_POST['payment_method_id'] ?? 0);
+            $paymentModel = new PaymentMethod();
+            $card = $paymentMethodId > 0 ? $paymentModel->getById($paymentMethodId, $_SESSION['user_id']) : null;
+
+            if (!$card) {
+                $_SESSION['cart_error'] = 'Please select a valid payment method to complete the transaction.';
+                header('Location: /cart');
+                exit;
+            }
+
             $orderModel = new Order();
-            // Process the bulk cart item checkout
             if ($orderModel->createOrderFromCart($_SESSION['user_id'], array_keys($_SESSION['cart']))) {
-                $_SESSION['cart'] = []; // Clear Cart
+                $_SESSION['cart'] = [];
+                $_SESSION['last_payment'] = [
+                    'brand' => $card['brand'],
+                    'masked' => PaymentMethod::maskNumber($card['card_number']),
+                    'holder' => $card['card_holder'],
+                ];
                 header('Location: /profile?transaction=completed');
                 exit;
             } else {
                 die("An error occurred during checkout.");
             }
         }
-        
+
         header('Location: /cart');
         exit;
     }

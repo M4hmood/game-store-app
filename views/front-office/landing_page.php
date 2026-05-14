@@ -1,12 +1,11 @@
 <!-- Hero Section -->
 <section class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">WELCOME TO THE<br>DIGITAL FRONTIER</h1>
-    <p class="hero-subtitle">Your gateway to infinite gaming experiences. Discover, collect, and dominate in the
-      neon-lit world of tomorrow.</p>
+    <h1 class="hero-title">Your next favorite game<br>is waiting</h1>
+    <p class="hero-subtitle">Browse a curated catalog of titles, build your library, and pick up where you left off — anytime, anywhere.</p>
     <div class="hero-cta">
-      <a href="signup.html" class="btn btn-primary btn-lg">Start Your Journey</a>
-      <a href="#featured" class="btn btn-secondary btn-lg">Explore Games</a>
+      <a href="/signup" class="btn btn-primary btn-lg">Get started</a>
+      <a href="#featured" class="btn btn-secondary btn-lg">Explore games</a>
     </div>
   </div>
 </section>

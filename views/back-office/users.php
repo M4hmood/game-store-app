@@ -4,56 +4,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manage Users - NEXUS VAULT</title>
+  <title>Manage Users &mdash; NEXUS//VAULT Admin</title>
   <link rel="icon" type="image/png" href="/assets/icons/controller.png">
   <link rel="stylesheet" href="/assets/css/styles.css">
   <style>
-    .admin-input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      background: #000;
-      color: #fff;
-      border: 1px solid rgba(0, 245, 255, 0.3);
-      border-radius: 4px;
-    }
-
     #edit-user-modal {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(10, 10, 15, 0.9);
+      background: rgba(0, 0, 0, 0.65);
       z-index: 2000;
       align-items: center;
       justify-content: center;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(4px);
     }
 
     .modal-content {
-      background: var(--bg-secondary);
-      padding: 30px;
-      border-radius: 8px;
-      border: 1px solid var(--neon-cyan);
+      background: var(--bg-card);
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
       max-width: 500px;
-      width: 100%;
+      width: calc(100% - 32px);
       position: relative;
-      box-shadow: var(--glow-cyan);
+      box-shadow: var(--shadow-lg);
     }
 
     .close-btn {
       position: absolute;
-      top: 15px;
-      right: 15px;
+      top: 12px;
+      right: 12px;
       background: transparent;
       border: none;
-      color: white;
+      color: var(--text-secondary);
       cursor: pointer;
       font-size: 1.5rem;
-      transition: color 0.3s ease;
+      line-height: 1;
+      transition: color 0.15s ease;
     }
 
     .close-btn:hover {
-      color: var(--neon-cyan);
+      color: var(--text-primary);
     }
   </style>
 </head>
@@ -67,8 +58,8 @@
         <li><a href="/store">Store Frontend</a></li>
       </ul>
       <div class="nav-auth">
-        <span class="admin-badge">ADMIN MODE</span>
-        <a href="/logout" class="btn btn-secondary">Sign Out</a>
+        <span class="admin-badge">Admin</span>
+        <a href="/logout" class="btn btn-secondary">Sign out</a>
       </div>
     </div>
   </nav>
@@ -105,7 +96,7 @@
         <div class="users-table-container">
           <table class="users-table" style="width: 100%; color: white; text-align: left; border-collapse: collapse;">
             <thead>
-              <tr style="border-bottom: 1px solid var(--neon-cyan);">
+              <tr style="border-bottom: 1px solid var(--border); color: var(--text-muted); text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.05em;">
                 <th style="padding: 10px;">ID</th>
                 <th style="padding: 10px;">Username</th>
                 <th style="padding: 10px;">Email</th>
@@ -117,26 +108,24 @@
             <tbody>
               <?php if (!empty($users)): ?>
                 <?php foreach ($users as $user): ?>
-                  <tr class="user-row" style="border-bottom: 1px solid #333;">
-                    <td class="user-id" style="padding: 10px;">#<?= htmlspecialchars($user['id']) ?></td>
-                    <td class="user-name" style="padding: 10px;"><?= htmlspecialchars($user['username']) ?></td>
-                    <td class="user-email" style="padding: 10px;"><?= htmlspecialchars($user['email']) ?></td>
-                    <td style="padding: 10px;">
-                      <span class="status-badge <?= $user['role'] === 'admin' ? 'active' : 'inactive' ?>"
-                        style="padding: 5px; border-radius: 4px; font-size: 0.8rem; border: 1px solid <?= $user['role'] === 'admin' ? 'var(--neon-green)' : 'gray' ?>;">
-                        <?= htmlspecialchars(strtoupper($user['role'] ?? 'CLIENT')) ?>
+                  <tr class="user-row" style="border-bottom: 1px solid var(--border-muted);">
+                    <td class="user-id" style="padding: 12px 10px; color: var(--text-muted);">#<?= htmlspecialchars($user['id']) ?></td>
+                    <td class="user-name" style="padding: 12px 10px;"><?= htmlspecialchars($user['username']) ?></td>
+                    <td class="user-email" style="padding: 12px 10px; color: var(--text-secondary);"><?= htmlspecialchars($user['email']) ?></td>
+                    <td style="padding: 12px 10px;">
+                      <span class="status-badge <?= $user['role'] === 'admin' ? 'active' : 'inactive' ?>">
+                        <?= htmlspecialchars($user['role'] ?? 'client') ?>
                       </span>
                     </td>
-                    <td class="user-date" style="padding: 10px;"><?= htmlspecialchars($user['created_at']) ?></td>
-                    <td class="user-actions" style="padding: 10px; display:flex; gap: 5px;">
-                      <button class="btn btn-sm btn-primary"
+                    <td class="user-date" style="padding: 12px 10px; color: var(--text-secondary);"><?= htmlspecialchars($user['created_at']) ?></td>
+                    <td class="user-actions" style="padding: 12px 10px; display:flex; gap: 6px;">
+                      <button class="btn btn-sm btn-secondary"
                         onclick="openEditUserModal(<?= $user['id'] ?>, '<?= htmlspecialchars(addslashes($user['username'])) ?>', '<?= htmlspecialchars(addslashes($user['email'])) ?>', '<?= htmlspecialchars(addslashes($user['role'] ?? 'client')) ?>')">Edit</button>
 
                       <?php if ($user['id'] != $_SESSION['user_id']): ?>
                         <form method="POST" action="/admin/users/delete" style="margin:0;">
                           <input type="hidden" name="user_id" value="<?= $user['id'] ?>">
-                          <button type="submit" class="btn btn-sm"
-                            style="background:#ff4444; color:white; border:none;">Ban</button>
+                          <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                         </form>
                       <?php endif; ?>
                     </td>
@@ -158,34 +147,30 @@
     <div class="modal-content">
       <button class="close-btn"
         onclick="document.getElementById('edit-user-modal').style.display='none'">&times;</button>
-      <h2 style="color:var(--neon-cyan); margin-bottom: 20px; font-family: var(--font-display);">Modify User Protocol
-      </h2>
+      <h2 style="color: var(--text-primary); margin-bottom: 20px; font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;">Edit user</h2>
 
       <form action="/admin/users/edit" method="POST">
         <input type="hidden" name="user_id" id="edit-user-id">
 
-        <div>
-          <label class="setting-label"
-            style="color:var(--text-secondary); display:block; margin-bottom:5px;">Username</label>
-          <input type="text" name="username" id="edit-user-username" class="admin-input" required>
+        <div class="form-group">
+          <label class="form-label">Username</label>
+          <input type="text" name="username" id="edit-user-username" class="form-input" required>
         </div>
 
-        <div>
-          <label class="setting-label"
-            style="color:var(--text-secondary); display:block; margin-bottom:5px;">Email</label>
-          <input type="email" name="email" id="edit-user-email" class="admin-input" required>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" name="email" id="edit-user-email" class="form-input" required>
         </div>
 
-        <div>
-          <label class="setting-label" style="color:var(--text-secondary); display:block; margin-bottom:5px;">System
-            Role</label>
-          <select name="role" id="edit-user-role" class="admin-input">
-            <option value="client">Client (Standard)</option>
-            <option value="admin">Admin (Elevated)</option>
+        <div class="form-group">
+          <label class="form-label">Role</label>
+          <select name="role" id="edit-user-role" class="form-input">
+            <option value="client">Client</option>
+            <option value="admin">Admin</option>
           </select>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-full" style="margin-top: 10px;">Update Network Node</button>
+        <button type="submit" class="btn btn-primary btn-full" style="margin-top: 8px;">Save changes</button>
       </form>
     </div>
   </div>

@@ -46,6 +46,20 @@ CREATE TABLE IF NOT EXISTS order_items (
     FOREIGN KEY (game_id) REFERENCES games(id) ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS payment_methods (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    card_holder VARCHAR(100) NOT NULL,
+    card_number VARCHAR(19) NOT NULL,
+    expiry_month TINYINT UNSIGNED NOT NULL,
+    expiry_year SMALLINT UNSIGNED NOT NULL,
+    cvv VARCHAR(4) NOT NULL,
+    brand VARCHAR(20) DEFAULT 'Card',
+    is_default TINYINT(1) NOT NULL DEFAULT 0,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
 -- ==========================================
 -- 2. SEEDERS (Dummy Data)
 -- ==========================================

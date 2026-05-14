@@ -14,6 +14,7 @@ require_once __DIR__ . '/../controllers/CartController.php';
 require_once __DIR__ . '/../controllers/GameController.php';
 require_once __DIR__ . '/../controllers/AuthController.php';
 require_once __DIR__ . '/../controllers/AdminController.php';
+require_once __DIR__ . '/../controllers/ProfileController.php';
 
 // 2. Include the Header (This loads your CSS and navbar for every page)
 // We might not want the normal header for the admin page, but we'll leave it simple for now or check paths
@@ -58,7 +59,27 @@ switch ($path) {
         break;
 
     case '/profile':
-        (new GameController())->profile();
+        (new ProfileController())->index();
+        break;
+
+    case '/profile/update':
+        (new ProfileController())->updateAccount();
+        break;
+
+    case '/profile/payment/add':
+        (new ProfileController())->addPayment();
+        break;
+
+    case '/profile/payment/update':
+        (new ProfileController())->updatePayment();
+        break;
+
+    case '/profile/payment/delete':
+        (new ProfileController())->deletePayment();
+        break;
+
+    case '/profile/payment/default':
+        (new ProfileController())->setDefaultPayment();
         break;
 
     case '/library':

@@ -148,7 +148,7 @@ $gameId = (int)$game['id'];
     border: 2px solid rgba(0, 245, 255, 0.3);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    box-shadow: 0 0 40px rgba(0, 245, 255, 0.15);
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.08);
     position: relative;
     overflow: hidden;
   }
@@ -189,17 +189,14 @@ $gameId = (int)$game['id'];
   }
 
   .price-current {
-    font-size: 3.5rem;
-    font-weight: 900;
-    background: var(--gradient-cyber);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: var(--font-mono);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
     display: block;
     line-height: 1;
     margin: var(--space-md) 0;
-    text-shadow: 0 0 40px rgba(0, 245, 255, 0.4);
   }
 
   .action-buttons {
@@ -246,13 +243,11 @@ $gameId = (int)$game['id'];
   }
 
   .rating-score {
-    font-size: 3.5rem;
-    font-weight: 900;
-    font-family: var(--font-mono);
-    background: var(--gradient-electric);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: var(--font-display);
+    color: var(--neon-green);
+    letter-spacing: -0.03em;
     line-height: 1;
   }
 
@@ -262,9 +257,9 @@ $gameId = (int)$game['id'];
 
   .rating-stars {
     color: var(--neon-yellow);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: var(--space-sm);
-    text-shadow: 0 0 10px rgba(249, 240, 2, 0.5);
+    letter-spacing: 2px;
   }
 
   .rating-text {
@@ -280,14 +275,13 @@ $gameId = (int)$game['id'];
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    background: rgba(0, 245, 255, 0.1);
-    border: 1px solid rgba(0, 245, 255, 0.3);
+    background: rgba(63, 185, 80, 0.12);
+    border: 1px solid rgba(63, 185, 80, 0.4);
     border-radius: var(--radius-md);
-    color: var(--neon-cyan);
+    color: var(--neon-green);
     font-family: var(--font-display);
     font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-weight: 600;
     width: 100%;
     justify-content: center;
   }
@@ -352,7 +346,7 @@ $gameId = (int)$game['id'];
       <h2 class="card-title">Game Cover</h2>
       <div class="cover-showcase">
         <img src="<?= $coverImage ?>" alt="<?= $title ?> cover"
-          onerror="this.src='https://placehold.co/600x400/101015/00f5ff?text=<?= urlencode($game['title']) ?>'">
+          onerror="this.src='https://placehold.co/600x400/161b22/8b949e?text=<?= urlencode($game['title']) ?>'">
       </div>
     </div>
 

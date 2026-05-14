@@ -12,7 +12,7 @@ class Order {
         try {
             $this->conn->beginTransaction();
 
-            $stmt = $this->conn->prepare("INSERT INTO orders (user_id, total_price) VALUES (:user_id, :total_price)");
+            $stmt = $this->conn->prepare("INSERT INTO orders (user_id, total_price, status) VALUES (:user_id, :total_price, 'completed')");
             $stmt->execute(['user_id' => $userId, 'total_price' => $price]);
             $orderId = $this->conn->lastInsertId();
 
@@ -59,8 +59,8 @@ class Order {
                 return false;
             }
 
-            // Insert matching order parent
-            $stmt = $this->conn->prepare("INSERT INTO orders (user_id, total_price) VALUES (:user_id, :total_price)");
+            // Insert matching order parent (paid via cart checkout -> completed)
+            $stmt = $this->conn->prepare("INSERT INTO orders (user_id, total_price, status) VALUES (:user_id, :total_price, 'completed')");
             $stmt->execute(['user_id' => $userId, 'total_price' => $totalPrice]);
             $orderId = $this->conn->lastInsertId();
 
