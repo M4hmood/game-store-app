@@ -17,7 +17,6 @@
       <a href="/" class="nav-logo">NEXUS//VAULT</a>
       <ul class="nav-links">
         <li><a href="/store">Store Frontend</a></li>
-        <li><a href="/admin">Dashboard</a></li>
       </ul>
       <div class="nav-auth">
         <span class="admin-badge">Admin</span>
